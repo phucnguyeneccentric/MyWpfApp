@@ -13,8 +13,11 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="450" Width="800">
-    <Border Padding="5">
-        
+        Title="My WPF" Height="450" Width="800">
+    <Border Padding="5"  Background="{DynamicResource PrimaryHueLightForegroundBrush}">
+        <StackPanel >
+            
+        </StackPanel>
+       
     </Border>
 </Window>
