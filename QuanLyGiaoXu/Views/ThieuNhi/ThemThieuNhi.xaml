@@ -1,0 +1,225 @@
+﻿<UserControl x:Class="QuanLyGiaoXu.Views.ThieuNhi.ThemThieuNhi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             Height="auto" Width="auto">
+    <Grid>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.3}" >
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel   VerticalAlignment="Top" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                            <GroupBox Header="Thông tin cá nhân" 
+                                      materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                
+                                
+
+                                <StackPanel  Grid.Row="0" >
+                                    <TextBox x:Name="TenThanhtxtbx" 
+                                             materialDesign:HintAssist.Hint="Tên Thánh" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17"  />
+                                </StackPanel>
+                                <StackPanel  Grid.Row="1">
+                                    <TextBox x:Name="HoTentxtbx" 
+                                             materialDesign:HintAssist.Hint="Họ và Tên"  
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel  Grid.Row="2">
+                                    <DatePicker x:Name="NgaySinhtxtbx"  
+                                                materialDesign:HintAssist.Hint="Ngày Sinh (dd/mm/yyyy)" 
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel  Grid.Row="3" >
+                                    <TextBox x:Name="NoiSinhtxtbx"  
+                                             materialDesign:HintAssist.Hint="Nơi Sinh" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel  Grid.Row="4" >
+                                    <TextBox x:Name="DiaChitxtbx"  
+                                             materialDesign:HintAssist.Hint="Địa Chỉ" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                </StackPanel>
+                            </Grid>
+
+                            </GroupBox>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <GroupBox Header="Cha Mẹ"
+                                      materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel  Grid.Row="0" >
+                                        <TextBox x:Name="chatxt"  
+                                             materialDesign:HintAssist.Hint="Cha" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                    </StackPanel>
+                                    <StackPanel  Grid.Row="1" >
+                                        <TextBox x:Name="metxt"  
+                                             materialDesign:HintAssist.Hint="Mẹ" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                    </StackPanel>
+
+                                </Grid>
+                            </GroupBox>
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid Margin="0,10,0,0" >
+                        <GroupBox Header="Bí Tích"
+                                   materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <GroupBox Grid.Column="0"
+                                    Header="Rửa Tội"
+                                    Style="{DynamicResource MaterialDesignGroupBox}"
+                                    materialDesign:ColorZoneAssist.Mode="PrimaryLight" 
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                    Margin="5">
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel>
+                                            <DatePicker x:Name="NgayRTtxtbx"  
+                                                materialDesign:HintAssist.Hint="Ngày rửa tội (dd/mm/yyyy)" 
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="NoiRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Tại" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="SoRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Số" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="NgRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Do" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="NgDDRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Người Đỡ Đầu" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Grid.Column="1"
+                                    Header="Rước Lễ Lần Đầu"
+                                    Style="{DynamicResource MaterialDesignGroupBox}"
+                                    materialDesign:ColorZoneAssist.Mode="PrimaryLight"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          Margin="5">
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel>
+                                            <DatePicker x:Name="NgayRLLDtxtbx"  
+                                                materialDesign:HintAssist.Hint="Ngày RLLĐ (dd/mm/yyyy)" 
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="NoiRLLDtxtbx"  
+                                             materialDesign:HintAssist.Hint="Tại" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="SoRLLDtxtbx"  
+                                             materialDesign:HintAssist.Hint="Số" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                                
+                                <GroupBox Grid.Column="2"
+                                    Header="Thêm Sức"
+                                    Style="{DynamicResource MaterialDesignGroupBox}"
+                                    materialDesign:ColorZoneAssist.Mode="PrimaryLight"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          Margin="5">
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel>
+                                            <DatePicker x:Name="NgayTStxtbx"  
+                                                materialDesign:HintAssist.Hint="Ngày thêm sức (dd/mm/yyyy)" 
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="NoiTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Tại" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="SoTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Số" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="NgTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Do" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                        <StackPanel >
+                                            <TextBox x:Name="NgDDTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Người Đỡ Đầu" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="17" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+
+
+                    <Grid Margin="0,10,0,5" >
+                        <StackPanel HorizontalAlignment="Right" Margin="0,0,150,0" >
+                            <Button Width="120"  Style="{StaticResource MaterialDesignRaisedAccentButton}"  ToolTip="Resource name: MaterialDesignRaisedAccentButton">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="AddBox" Height="24"  Width="24" />
+                                    <Label Content="Tạo" Margin="0,-4,0,0"/>
+
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Right" >
+                            <Button Width="120" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" Background="#FFE21B1B">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="Cancel" Height="24"  Width="24" />
+                                    <Label Content="Hủy" Margin="0,-4,0,0"/>
+
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+        </materialDesign:TransitioningContent>
+
+    </Grid>
+</UserControl>

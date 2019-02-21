@@ -1,0 +1,128 @@
+﻿<UserControl x:Class="QuanLyGiaoXu.Views.CacGioi.GioiThieuNhi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:QuanLyGiaoXu.Helpers"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             Height="auto" Width="auto">
+    <UserControl.Resources>
+        <converter:GenderConverter x:Key="GenderConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" 
+                         materialDesign:HintAssist.Hint="Tìm kiếm"
+                         Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"
+                         materialDesign:HintAssist.HintOpacity="0.4"
+                         MinWidth="200" VerticalAlignment="Center"
+                         >
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding SearchAction}" Key="Return" />
+                    </TextBox.InputBindings>
+                </TextBox>
+                <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1">
+                    <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                </Button>
+                
+            </Grid>
+            
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ComboBox x:Name="GiaoHocbx" materialDesign:HintAssist.Hint="Giáo họ" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+
+
+
+        </Grid>
+               
+        <ScrollViewer Grid.Row="2">
+            <ListView Name="ThieuNhilst" ItemsSource="{Binding ListThieuNhi,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  >
+                <ListView.View>
+                    <GridView >
+
+                        <GridViewColumn Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource MaterialDesignFlatButton}" Height="17"
+                                            Command="{Binding ShowChiTietCommand}" >
+                                        <materialDesign:PackIcon Kind="EyeOutline" Width="10" Height="10"/>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                       
+                        <GridViewColumn Header="Mã" 
+                                        DisplayMemberBinding="{Binding GiaoDan.magiaodan}" Width="150" />
+                        
+                        <GridViewColumn Header="Tên Thánh" 
+                                        DisplayMemberBinding="{Binding GiaoDan.tenthanh}" Width="100"/>
+
+                        <GridViewColumn Header="Họ và Tên"
+                                        DisplayMemberBinding="{Binding GiaoDan.hoten}"  Width="auto"/>
+                        
+                        <GridViewColumn Header="Ngày Sinh"
+                                        DisplayMemberBinding="{Binding GiaoDan.ngaysinh, StringFormat=dd/MM/yyyy}" Width="100"/>
+                        
+                        <GridViewColumn Header="Giới tính"
+                                        DisplayMemberBinding="{Binding GiaoDan.gioitinh, Converter={StaticResource GenderConverter}}" Width="100"/>
+                        
+                        <GridViewColumn Header="Giáo Họ"
+                                        DisplayMemberBinding="{Binding GiaoDan.giaoho}" Width="100"/>
+
+
+                    </GridView>
+                    
+                </ListView.View>
+                <!--<ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}"  >
+                        <Setter Property="Height" Value="24" />
+                        <Setter Property="Background" Value="#5EF4E057" />
+                        <Setter Property="Foreground" Value="#FF4B94EC"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Foreground" Value="DarkBlue" />
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF04FFC6" Offset="0.986"/>
+                                            <GradientStop Color="#FF1CAFBD" Offset="0.5"/>
+                                            <GradientStop Color="#FF1CAFBD" Offset="0.51"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>-->
+            </ListView>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLGIAOXUModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BiTich">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDGiaoDan" Type="int" Nullable="false" />
+    <Property Name="NguoiRuaToi" Type="nvarchar" MaxLength="50" />
+    <Property Name="NguoiDoDauRT" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayRuaToi" Type="date" />
+    <Property Name="NoiRuaToi" Type="nvarchar" MaxLength="20" />
+    <Property Name="SoRuaToi" Type="varchar" MaxLength="10" />
+    <Property Name="NgayRLLD" Type="date" />
+    <Property Name="NoiRLLD" Type="nvarchar" MaxLength="20" />
+    <Property Name="SoRLLD" Type="varchar" MaxLength="10" />
+    <Property Name="NguoiThemSuc" Type="nvarchar" MaxLength="50" />
+    <Property Name="NguoiDoDauTS" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayThemSuc" Type="date" />
+    <Property Name="NoiThemSuc" Type="nvarchar" MaxLength="20" />
+    <Property Name="SoThemSuc" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ChuongTrinhGiaoLy">
+    <Key>
+      <PropertyRef Name="MaChuongTrinh" />
+    </Key>
+    <Property Name="MaChuongTrinh" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="NgayKhaiGiang" Type="date" />
+    <Property Name="NgayKetThuc" Type="date" />
+    <Property Name="Khoi" Type="tinyint" Nullable="false" />
+    <Property Name="Cap" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiaChi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDGiaoDan" Type="int" Nullable="false" />
+    <Property Name="DiaChiNha" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GiaoHo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="GiaoXu" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="GiaoHat" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="GiaoPhan" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="NgayChuyenDen" Type="date" Nullable="false" />
+    <Property Name="NgayChuyenDi" Type="date" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiaDinh">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaGiaDinh" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ChuHo" Type="int" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GiaoHo" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="GiaoXu" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="GIaoHat" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="GiaoPhan" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiaoDan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaGiaoDan" Type="nchar" MaxLength="16" Nullable="false" />
+    <Property Name="TenThanh" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgaySinh" Type="date" Nullable="false" />
+    <Property Name="GioiTinh" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiaoLy">
+    <Key>
+      <PropertyRef Name="IDGiaoDan" />
+      <PropertyRef Name="ChuongTrinhGiaoLy" />
+    </Key>
+    <Property Name="IDGiaoDan" Type="int" Nullable="false" />
+    <Property Name="ChuongTrinhGiaoLy" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PhongHoc" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DiemTrungBinh" Type="float" />
+    <Property Name="DiemChuyenCan" Type="int" />
+    <Property Name="XepLoai" Type="nvarchar" MaxLength="10" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gioi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDGiaoDan" Type="int" Nullable="false" />
+    <Property Name="Gioi" Type="int" Nullable="false" />
+    <Property Name="NgayThamGia" Type="date" Nullable="false" />
+    <Property Name="NgayKetThuc" Type="date" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_BiTich_GiaoDan">
+    <End Role="GiaoDan" Type="Self.GiaoDan" Multiplicity="1" />
+    <End Role="BiTich" Type="Self.BiTich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoDan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BiTich">
+        <PropertyRef Name="IDGiaoDan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CacGioi_Giao Dan">
+    <End Role="GiaoDan" Type="Self.GiaoDan" Multiplicity="1" />
+    <End Role="Gioi" Type="Self.Gioi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoDan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Gioi">
+        <PropertyRef Name="IDGiaoDan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiaChi_Giao Dan">
+    <End Role="GiaoDan" Type="Self.GiaoDan" Multiplicity="1" />
+    <End Role="DiaChi" Type="Self.DiaChi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoDan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DiaChi">
+        <PropertyRef Name="IDGiaoDan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Giao Ly_Chuong Trinh Giao Ly">
+    <End Role="ChuongTrinhGiaoLy" Type="Self.ChuongTrinhGiaoLy" Multiplicity="1" />
+    <End Role="GiaoLy" Type="Self.GiaoLy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuongTrinhGiaoLy">
+        <PropertyRef Name="MaChuongTrinh" />
+      </Principal>
+      <Dependent Role="GiaoLy">
+        <PropertyRef Name="ChuongTrinhGiaoLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="QLGIAOXUModel1StoreContainer">
+    <EntitySet Name="BiTich" EntityType="Self.BiTich" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChuongTrinhGiaoLy" EntityType="Self.ChuongTrinhGiaoLy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DiaChi" EntityType="Self.DiaChi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiaDinh" EntityType="Self.GiaDinh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiaoDan" EntityType="Self.GiaoDan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiaoLy" EntityType="Self.GiaoLy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gioi" EntityType="Self.Gioi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BiTich_GiaoDan" Association="Self.FK_BiTich_GiaoDan">
+      <End Role="GiaoDan" EntitySet="GiaoDan" />
+      <End Role="BiTich" EntitySet="BiTich" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CacGioi_Giao Dan" Association="Self.FK_CacGioi_Giao Dan">
+      <End Role="GiaoDan" EntitySet="GiaoDan" />
+      <End Role="Gioi" EntitySet="Gioi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiaChi_Giao Dan" Association="Self.FK_DiaChi_Giao Dan">
+      <End Role="GiaoDan" EntitySet="GiaoDan" />
+      <End Role="DiaChi" EntitySet="DiaChi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Giao Ly_Chuong Trinh Giao Ly" Association="Self.FK_Giao Ly_Chuong Trinh Giao Ly">
+      <End Role="ChuongTrinhGiaoLy" EntitySet="ChuongTrinhGiaoLy" />
+      <End Role="GiaoLy" EntitySet="GiaoLy" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

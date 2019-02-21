@@ -1,0 +1,83 @@
+﻿<Page x:Class="QuanLyGiaoXu.Views.ThieuNhi.MainThieuNhi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:QuanLyGiaoXu.ViewModels.ThieuNhi"
+        xmlns:View="clr-namespace:QuanLyGiaoXu.Views.ThieuNhi"
+        mc:Ignorable="d" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainThieuNhi" >
+    <Page.Resources>
+        <DataTemplate DataType="{x:Type ViewModel:ThemThieuNhiViewModel}">
+            <View:ThemThieuNhi/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:ThongTinThieuNhiViewModel}">
+            <View:ThongTinTN/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:DanhSachThieuNhiViewModel}">
+            <View:DanhSachThieuNhi/>
+        </DataTemplate>
+
+
+    </Page.Resources>
+    
+    <Grid Background="#FFEEEEEE" >
+
+        <Grid HorizontalAlignment="Left" Margin="285.5,0,0,0" >
+            <TextBlock x:Name="TieuDetxt" Text="{Binding SelectedItem.Name, ElementName=ListViewThieuNhiMenu}" 
+                               Style="{StaticResource MaterialDesignDisplay1TextBlock}" Margin="10,0,0,0"/>
+        </Grid>
+
+        <Grid Margin="285.5,45,0,0" >
+            <ContentControl x:Name="ChucNangCtrl"  Margin="10"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="800" >
+            <materialDesign:ColorZone Mode="PrimaryLight" Height="800">
+                <StackPanel>
+                    <Grid>
+                        <Button Click="Button_Click" Background="{x:Null}"  Margin="0,0,236,0" Foreground="#DD191515">
+                            <Button.BorderBrush>
+                                <SolidColorBrush Color="#FF736291" Opacity="0"/>
+                            </Button.BorderBrush>
+                            <materialDesign:PackIcon Kind="KeyboardBackspace" />
+                        </Button>
+                    </Grid>
+                    <Grid Width="285.5">
+                        <Grid VerticalAlignment="Top" Height="103"  >
+                            <Image  Opacity="0.985" IsEnabled="False" Width="90"  />
+                        </Grid>
+                        <Grid VerticalAlignment="Top"  Margin="0,100,0,0" Height="24" >
+                            <TextBlock Text="Thiếu Nhi" VerticalAlignment="Center" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="20 0" FontWeight="Bold"/>
+                        </Grid>
+                        <!--<materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
+                            <Grid x:Name="GridCursor" Margin="0 127 0 0" Background="#FF0069C0" Width="10" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top"/>
+                        </materialDesign:TransitioningContent>-->
+                        
+                        <ListView x:Name="ListViewThieuNhiMenu" Margin="0,127,0,0"
+                          FontSize="18" SelectionChanged="ListViewThieuNhiMenu_SelectionChanged"
+                          ItemsSource="{Binding ThieuNhiMenu}"
+                          SelectedIndex="0">
+                          
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel  Orientation="Horizontal" >
+                                        <materialDesign:PackIcon Kind="{Binding Icon}" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                        <TextBlock Text="{Binding Name}" Style="{StaticResource MaterialDesignSubheadingTextBlock}" VerticalAlignment="Center" Margin="20 0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                    </Grid>
+
+                </StackPanel>
+
+            </materialDesign:ColorZone>
+        </Grid>
+            
+
+
+    </Grid>
+</Page>

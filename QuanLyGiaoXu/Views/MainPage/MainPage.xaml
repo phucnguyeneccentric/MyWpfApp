@@ -1,0 +1,40 @@
+﻿<Page x:Class="QuanLyGiaoXu.Views.MainPage.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyGiaoXu.Views.MainPage"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Quan Ly Giao Xu" ShowsNavigationUI="False" >
+
+    <Grid >
+        <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Margin="15">
+                <Button x:Name="Gioibtn" 
+                        Click="Gioibtn_Click" 
+                        Content="Các Giới" 
+                        Width="250" Height="250" Background="#FFB7733A" FontSize="48" />
+            </StackPanel>
+            <StackPanel Margin="15">
+                <Button x:Name="KhoaHocbtn" 
+                        Content="Giáo Lý" 
+                        Width="250" Height="250" Background="#FF5BAE4E" FontSize="48"  />
+            </StackPanel>
+
+            <StackPanel Margin="15">
+                <Button 
+                    x:Name="BiTichbtn" 
+                    Content="Bí Tích" 
+                    Width="250" Height="250" Background="#FF4E82AE" FontSize="48"  />
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Page>

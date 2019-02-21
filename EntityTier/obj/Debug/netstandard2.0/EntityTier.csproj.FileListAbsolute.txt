@@ -1,0 +1,9 @@
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\bin\Debug\netstandard2.0\EntityTier.deps.json
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\bin\Debug\netstandard2.0\EntityTier.dll
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\bin\Debug\netstandard2.0\EntityTier.pdb
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\obj\Debug\netstandard2.0\EntityTier.csproj.CoreCompileInputs.cache
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\obj\Debug\netstandard2.0\EntityTier.AssemblyInfoInputs.cache
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\obj\Debug\netstandard2.0\EntityTier.AssemblyInfo.cs
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\obj\Debug\netstandard2.0\EntityTier.dll
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\obj\Debug\netstandard2.0\EntityTier.pdb
+C:\Users\theba\source\repos\MyWpfApp\EntityTier\obj\Debug\netstandard2.0\EntityTier.csprojAssemblyReference.cache
