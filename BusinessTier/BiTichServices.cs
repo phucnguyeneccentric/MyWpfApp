@@ -1,12 +1,13 @@
 ﻿using DataLayer;
+using EntityTier;
 
 namespace BusinessTier
 {
     public class BiTichServices
     {
-        public static BiTich GetBiTich(string maGiaoDan)
+        public static BiTichEntity GetBiTich(int? idGiaoDan)
         {
-            return BiTichProvider.GetBiTich(maGiaoDan);
+            return BiTichProvider.GetBiTich(idGiaoDan);
         }
         public static int AddOrUpdateBiTich(BiTich biTich)
         {

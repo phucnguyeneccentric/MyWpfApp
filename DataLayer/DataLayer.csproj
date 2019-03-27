@@ -63,27 +63,34 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BiTich.cs" />
+    <Compile Include="Data\BiTich.cs" />
     <Compile Include="BiTichProvider.cs" />
-    <Compile Include="ChuongTrinhGiaoLy.cs" />
-    <Compile Include="DiaChi.cs" />
-    <Compile Include="GiaDinh.cs" />
+    <Compile Include="Data\ChuongTrinhGiaoLy.cs" />
+    <Compile Include="Data\DiaChi.cs" />
+    <Compile Include="DiaChiProvider.cs" />
+    <Compile Include="Data\GiaDinh.cs" />
     <Compile Include="GiaDinhProvider.cs" />
-    <Compile Include="GiaoDan.cs" />
+    <Compile Include="Data\GiaoDan.cs" />
     <Compile Include="GiaoDanProvider.cs" />
-    <Compile Include="GiaoLy.cs" />
-    <Compile Include="Gioi.cs" />
+    <Compile Include="Data\GiaoLy.cs" />
+    <Compile Include="Data\Gioi.cs" />
     <Compile Include="GioiProvider.cs" />
+    <Compile Include="Data\QLGIAOXU.cs" />
+    <Compile Include="Migrations\201903191510174_NotRequireDiachi.cs" />
+    <Compile Include="Migrations\201903191510174_NotRequireDiachi.Designer.cs">
+      <DependentUpon>201903191510174_NotRequireDiachi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903230332498_UpdateLengthDiaChi.cs" />
+    <Compile Include="Migrations\201903230332498_UpdateLengthDiaChi.Designer.cs">
+      <DependentUpon>201903230332498_UpdateLengthDiaChi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="QLGIAOXU.cs" />
     <Compile Include="sysdiagrams.cs" />
-    <Compile Include="ThieuNhiProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +106,14 @@
       <Project>{067b9a6b-3812-427c-982c-840e6e2f63e5}</Project>
       <Name>EntityTier</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903191510174_NotRequireDiachi.resx">
+      <DependentUpon>201903191510174_NotRequireDiachi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903230332498_UpdateLengthDiaChi.resx">
+      <DependentUpon>201903230332498_UpdateLengthDiaChi.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

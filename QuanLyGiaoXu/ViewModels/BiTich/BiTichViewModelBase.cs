@@ -9,7 +9,7 @@ namespace QuanLyGiaoXu.ViewModels.BiTich
     public abstract class BiTichViewModelBase : ViewModelBase
     {
         public abstract string Name { get; }
-        public abstract string Icon { get; }
+        //public abstract string Icon { get; }
 
     }
 }

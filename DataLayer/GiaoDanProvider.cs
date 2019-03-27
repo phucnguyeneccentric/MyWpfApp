@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using EntityTier;
 using System.Threading.Tasks;
+using System.Data.Entity.Validation;
 
 namespace DataLayer
 {
@@ -18,6 +20,82 @@ namespace DataLayer
             }
             return _Giaodan;
         }
+
+        public static GiaoDanEntityFull GetGiaoDanByID(int? idGiaoDan)
+        {
+            GiaoDanEntityFull _Giaodan = null;
+            using (QLGIAOXU db = new QLGIAOXU())
+            {
+                _Giaodan = (from u in db.GiaoDan
+                            join v in db.DiaChi on u.ID equals v.IDGiaoDan
+                            join t in db.Gioi on u.ID equals t.IDGiaoDan
+                            where u.ID == idGiaoDan
+                            select new GiaoDanEntityFull
+                            {
+                                id = u.ID,
+                                magiaodan = u.MaGiaoDan,
+                                tenthanh = u.TenThanh,
+                                hoten = u.HoTen,
+                                ngaysinh = u.NgaySinh,
+                                gioitinh = u.GioiTinh,
+                                diachinha = v.DiaChiNha,
+                                giaoho = v.GiaoHo,
+                                giaohat = v.GiaoHat,
+                                giaoxu = v.GiaoXu,
+                                giaophan = v.GiaoPhan,
+                                ngaychuyenden = v.NgayChuyenDen,
+                                ngaychuyendi = v.NgayChuyenDi,
+                                gioi = t.Gioi1,
+                                cha = u.Cha,
+                                me = u.Me
+                            }).FirstOrDefault();
+  
+            }
+            return _Giaodan;
+        }
+        public static bool CheckValidCode(string maGiaoDan)
+            {
+            bool _valid = false;
+            GiaoDan _Giaodan = null;
+            using (QLGIAOXU db = new QLGIAOXU())
+            {
+                _Giaodan = (from u in db.GiaoDan where (u.MaGiaoDan == maGiaoDan) select u).FirstOrDefault();
+                if(_Giaodan != null)
+                {
+                    _valid = true;
+                }
+            }
+            
+            return _valid;
+        }
+        public static GiaoDanEntityShort GetNameGiaoDanByID(int? idGiaoDan)
+        {
+            GiaoDanEntityShort _Giaodan = new GiaoDanEntityShort();
+            _Giaodan.tenthanh = string.Empty;
+            _Giaodan.hoten = string.Empty;
+            using (QLGIAOXU db = new QLGIAOXU())
+            {
+                GiaoDanEntityShort _tmpgiaodan = (from u in db.GiaoDan
+                                                  where u.ID == idGiaoDan
+                                                  select new GiaoDanEntityShort
+                                                  {
+                                                      hoten = u.HoTen,
+                                                      tenthanh = u.TenThanh
+                                                  }
+                                                  ).FirstOrDefault();
+                if (_tmpgiaodan != null) _Giaodan = _tmpgiaodan;
+            }
+            return _Giaodan;
+        }
+        public static string GetCodeGiaoDanByID(int? idGiaoDan)
+        {
+            string _Code = "";
+            using (QLGIAOXU db = new QLGIAOXU())
+            {
+                _Code = (from u in db.GiaoDan where u.ID == idGiaoDan select u.MaGiaoDan).FirstOrDefault();
+            }
+            return _Code;
+        }
         public static int GetIDGiaoDanByCode(string maGiaoDan)
         {
             int _idGiaodan = 0;
@@ -26,6 +104,34 @@ namespace DataLayer
                 _idGiaodan = (from u in db.GiaoDan where (u.MaGiaoDan == maGiaoDan && u.Status == true) select u.ID).FirstOrDefault();
             }
             return _idGiaodan;
+        }
+        public static List<GiaoDanEntityFull> GetAllActiveGiaoDan()
+        {
+            List<GiaoDanEntityFull> _Giaodan = null;
+            using (QLGIAOXU db = new QLGIAOXU())
+            {
+                _Giaodan = (from u in db.GiaoDan
+                             join c in db.Gioi on u.ID equals c.IDGiaoDan
+                             join v in db.DiaChi on u.ID equals v.IDGiaoDan
+                             where (u.Status == true && c.Status == true) // c.Gioi1 == 0 la thieu nhi
+                             select new GiaoDanEntityFull
+                             {
+                                 id = u.ID,
+                                 magiaodan = u.MaGiaoDan,
+                                 tenthanh = u.TenThanh,
+                                 hoten = u.HoTen,
+                                 ngaysinh = u.NgaySinh,
+                                 diachinha = v.DiaChiNha,
+                                 giaoho = v.GiaoHo,
+                                 gioitinh = u.GioiTinh,
+                                 cha = u.Cha,
+                                 me = u.Me,
+                             }).ToList();
+
+
+            }
+            return _Giaodan;
+
         }
         public static List<GiaoDan> GetAllActiveGiaoDanByName(string tenGiaodan)
         {
@@ -93,31 +199,37 @@ namespace DataLayer
             }
                 return _GiaodanCode;
         }
-        public static int AddOrUpdateGiaoDan(GiaoDan gd)
+        public static int AddOrUpdateGiaoDan(GiaoDan giaodan)
         {
-            int magiaodan = 0;
+            int idgiaodan = 0;
             using (QLGIAOXU db = new QLGIAOXU())
             {
-                GiaoDan tmp = db.GiaoDan.Where(u => u.MaGiaoDan == gd.MaGiaoDan && u.Status == true).FirstOrDefault();
-                if (tmp != null)
+                if(giaodan.ID > 0)
                 {
-                    tmp.TenThanh = gd.TenThanh;
-                    tmp.HoTen = gd.HoTen;
-                    tmp.NgaySinh = gd.NgaySinh;
-                    tmp.GioiTinh = gd.GioiTinh;
+                    GiaoDan _giaodan = db.GiaoDan.Where(u => u.ID == giaodan.ID).FirstOrDefault();
+                    if (_giaodan != null)
+                    {
+                        _giaodan.MaGiaoDan = giaodan.MaGiaoDan;
+                        _giaodan.TenThanh = giaodan.TenThanh;
+                        _giaodan.HoTen = giaodan.HoTen;
+                        _giaodan.NgaySinh = giaodan.NgaySinh;
+                        _giaodan.GioiTinh = giaodan.GioiTinh;
+                        _giaodan.Cha = giaodan.Cha;
+                        _giaodan.Me = giaodan.Me;
+                    }
                 }
                 else
                 {
-                    db.GiaoDan.Add(gd);
+                    db.GiaoDan.Add(giaodan);
                 }
                 int x = db.SaveChanges();
-                if (x > 0)
+                if (x > 0) // The number of objects written to the underlying database, if x==0 that means update objects
                 {
-                    magiaodan = x;
+                    idgiaodan = giaodan.ID;
                 }
 
             }
-            return magiaodan;
+            return idgiaodan;
         }
         public static bool DeleteGiaoDan(string maGiaoDan)
         {

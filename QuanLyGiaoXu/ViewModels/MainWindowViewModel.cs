@@ -15,7 +15,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using QuanLyGiaoXu.Views.ThieuNhi;
 using System.Collections.ObjectModel;
-using QuanLyGiaoXu.ViewModels.ThieuNhi;
 
 namespace QuanLyGiaoXu.ViewModels
 {

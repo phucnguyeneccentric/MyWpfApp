@@ -108,3 +108,6 @@ C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.csproj.CoreCo
 C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
 C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.dll
 C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.pdb
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.NotRequireDiachi.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.csproj.GenerateResource.cache
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.UpdateLengthDiaChi.resources

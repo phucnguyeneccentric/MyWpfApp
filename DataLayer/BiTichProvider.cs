@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityTier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +18,32 @@ namespace DataLayer
             }
             return _listbitich;
         }
-        public static BiTich GetBiTich(string maGiaoDan)
+        public static BiTichEntity GetBiTich(int? idGiaoDan)
         {
-            BiTich _bitich = null;
-            int _idGiaoDan = GiaoDanProvider.GetIDGiaoDanByCode(maGiaoDan);
+            BiTich _tmp = null;
+            BiTichEntity _bitich = new BiTichEntity();
             using (QLGIAOXU db = new QLGIAOXU())
             {
-                if(_idGiaoDan != 0)
+                if(idGiaoDan != 0)
                 {
-                    _bitich = (from u in db.BiTich where (u.IDGiaoDan == _idGiaoDan) select u).FirstOrDefault();
+                    _tmp = (from u in db.BiTich where (u.IDGiaoDan == idGiaoDan) select u).FirstOrDefault();
+                }
+                if (_tmp != null)
+                {
+                    _bitich.NgayRLLD = _tmp.NgayRLLD;
+                    _bitich.NgayRuaToi = _tmp.NgayRuaToi;
+                    _bitich.NgayThemSuc = _tmp.NgayThemSuc;
+                    _bitich.NguoiDoDauRT = _tmp.NguoiDoDauRT;
+                    _bitich.NguoiDoDauTS = _tmp.NguoiDoDauTS;
+                    _bitich.NguoiRuaToi = _tmp.NguoiRuaToi;
+                    _bitich.NguoiThemSuc = _tmp.NguoiThemSuc;
+                    _bitich.NoiRLLD = _tmp.NoiRLLD;
+                    _bitich.NoiRuaToi = _tmp.NoiRuaToi;
+                    _bitich.NoiThemSuc = _tmp.NoiThemSuc;
+                    _bitich.SoRLLD = _tmp.SoRLLD;
+                    _bitich.SoRuaToi = _tmp.SoRuaToi;
+                    _bitich.SoThemSuc = _tmp.SoThemSuc;
+                    
                 }
                 
             }

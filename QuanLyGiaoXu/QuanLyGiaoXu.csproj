@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,14 +59,21 @@
     <Reference Include="MaterialDesignColors, Version=1.0.0.14576, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.1\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignExtensions, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignExtensions.2.4.0\lib\net45\MaterialDesignExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,35 +92,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\DateConverter.cs" />
-    <Compile Include="Helpers\GenderConverter.cs" />
-    <Compile Include="Helpers\InventoryHelper.cs" />
+    <Compile Include="Converters\DateConverter.cs" />
+    <Compile Include="Converters\BoolInverterConverter.cs" />
+    <Compile Include="Converters\GenderConverter.cs" />
+    <Compile Include="Converters\GioiConverter.cs" />
+    <Compile Include="Helpers\GiaoXuHelper.cs" />
+    <Compile Include="Mediators\AsyncObservableCollection.cs" />
     <Compile Include="Mediators\ChiTietGiaoDanDirector.cs" />
     <Compile Include="Mediators\EditDialogDirector.cs" />
+    <Compile Include="Helpers\SuggestionsSource.cs" />
+    <Compile Include="Mediators\ObservableCollectionObject.cs" />
+    <Compile Include="Mediators\ObservableImmutableList.cs" />
+    <Compile Include="ValidationRules\MaxLengthValidationRule.cs" />
+    <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="ValidationRules\NotValidDateValidationRule.cs" />
     <Compile Include="ViewModels\AnotherCommandImplementation.cs" />
     <Compile Include="ViewModels\BiTich\BiTichViewModel.cs" />
     <Compile Include="ViewModels\BiTich\BiTichViewModelBase.cs" />
     <Compile Include="ViewModels\BiTich\SoRLLDViewModel.cs" />
     <Compile Include="ViewModels\BiTich\SoRuaToiViewModel.cs" />
     <Compile Include="ViewModels\BiTich\SoThemSucViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\AdvancedSearchViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\CacGioiViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\CacGioiViewModelBase.cs" />
-    <Compile Include="ViewModels\CacGioi\ChiTietGiaoDan\ChiTietGiaoDanEditModeVM.cs" />
-    <Compile Include="ViewModels\CacGioi\ChiTietGiaoDan\ChiTietGiaoDanViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\ChiTietGiaoDan\ChiTietGiaoDanEditViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\ChiTietGiaoDan\ChiTietGiaoDanWatchModeVM.cs" />
-    <Compile Include="ViewModels\CacGioi\GioiCaoNienViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\GioiGiaTruongViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\GioiHienMauViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\GioiThieuNhiViewModel.cs" />
-    <Compile Include="ViewModels\CacGioi\GioiTreViewModel.cs" />
+    <Compile Include="ViewModels\GiaoDan\GiaoDanViewModel.cs" />
+    <Compile Include="ViewModels\GiaoDan\GiaoDanViewModelBase.cs" />
+    <Compile Include="ViewModels\GiaoDan\ChiTietGiaoDan\ChiTietGiaoDanViewModel.cs" />
+    <Compile Include="ViewModels\GiaoDan\ChiTietGiaoDan\ChiTietGiaoDanEditViewModel.cs" />
+    <Compile Include="ViewModels\GiaoDan\DanhSachGiaoDanViewModel.cs" />
+    <Compile Include="ViewModels\GiaoDan\ThemGiaoDanViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModels\ThieuNhi\ThieuNhiViewModel.cs" />
-    <Compile Include="ViewModels\ThieuNhi\ThieuNhiViewModelBase.cs" />
-    <Compile Include="ViewModels\ThieuNhi\DanhSachThieuNhiViewModel.cs" />
-    <Compile Include="ViewModels\ThieuNhi\ThemThieuNhiViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\BiTich\BiTichPage.xaml.cs">
       <DependentUpon>BiTichPage.xaml</DependentUpon>
@@ -112,44 +133,26 @@
     <Compile Include="Views\BiTich\SoThemSuc.xaml.cs">
       <DependentUpon>SoThemSuc.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CacGioi\AdvancedSearch.xaml.cs">
-      <DependentUpon>AdvancedSearch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CacGioi\CacGioiPage.xaml.cs">
-      <DependentUpon>CacGioiPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CacGioi\ChiTiet\ChinhSuaThongTin.xaml.cs">
-      <DependentUpon>ChinhSuaThongTin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CacGioi\ChiTiet\ChiTietGiaoDan.xaml.cs">
+    <Compile Include="Views\GiaoDan\ChiTiet\ChiTietGiaoDan.xaml.cs">
       <DependentUpon>ChiTietGiaoDan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CacGioi\GioiCaoNien.xaml.cs">
-      <DependentUpon>GioiCaoNien.xaml</DependentUpon>
+    <Compile Include="Views\GiaoDan\GiaoDanPage.xaml.cs">
+      <DependentUpon>GiaoDanPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CacGioi\GioiGiaTruong.xaml.cs">
-      <DependentUpon>GioiGiaTruong.xaml</DependentUpon>
+    <Compile Include="Views\GiaoDan\DanhSachGiaoDan.xaml.cs">
+      <DependentUpon>DanhSachGiaoDan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CacGioi\GioiHienMau.xaml.cs">
-      <DependentUpon>GioiHienMau.xaml</DependentUpon>
+    <Compile Include="Views\GiaoDan\HoGiaDinh.xaml.cs">
+      <DependentUpon>HoGiaDinh.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CacGioi\GioiThieuNhi.xaml.cs">
-      <DependentUpon>GioiThieuNhi.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CacGioi\GioiTre.xaml.cs">
-      <DependentUpon>GioiTre.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CacGioi\ChiTiet\XemThongTin.xaml.cs">
-      <DependentUpon>XemThongTin.xaml</DependentUpon>
+    <Compile Include="Views\GiaoDan\ThemGiaoDan.xaml.cs">
+      <DependentUpon>ThemGiaoDan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ThieuNhi\DanhSachThieuNhi.xaml.cs">
       <DependentUpon>DanhSachThieuNhi.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ThieuNhi\MainThieuNhi.xaml.cs">
-      <DependentUpon>MainThieuNhi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ThieuNhi\ThemThieuNhi.xaml.cs">
       <DependentUpon>ThemThieuNhi.xaml</DependentUpon>
@@ -173,43 +176,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CacGioi\AdvancedSearch.xaml">
+    <Page Include="Views\GiaoDan\ChiTiet\ChiTietGiaoDan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CacGioi\CacGioiPage.xaml">
+    <Page Include="Views\GiaoDan\GiaoDanPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CacGioi\ChiTiet\ChinhSuaThongTin.xaml">
+    <Page Include="Views\GiaoDan\DanhSachGiaoDan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CacGioi\ChiTiet\ChiTietGiaoDan.xaml">
+    <Page Include="Views\GiaoDan\HoGiaDinh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CacGioi\GioiCaoNien.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CacGioi\GioiGiaTruong.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CacGioi\GioiHienMau.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CacGioi\GioiThieuNhi.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CacGioi\GioiTre.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CacGioi\ChiTiet\XemThongTin.xaml">
+    <Page Include="Views\GiaoDan\ThemGiaoDan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,10 +213,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ThieuNhi\DanhSachThieuNhi.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ThieuNhi\MainThieuNhi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,7 +248,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="ViewModels\ThieuNhi\ThongTinThieuNhiViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -295,6 +273,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ResourceDictionary\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\abc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

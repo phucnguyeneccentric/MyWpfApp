@@ -9,8 +9,8 @@ namespace QuanLyGiaoXu.ViewModels.BiTich
 {
     public class SoRLLDViewModel : BiTichViewModelBase
     {
-        public override string Name => InventoryHelper.SoRLLD;
+        public override string Name => GiaoXuHelper.SoRLLD;
 
-        public override string Icon => InventoryHelper.SoRLLDIcon;
+        //public override string Icon => GiaoXuHelper.SoRLLDIcon;
     }
 }

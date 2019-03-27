@@ -4,15 +4,144 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyGiaoXu.Views.BiTich"
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             xmlns:converter="clr-namespace:QuanLyGiaoXu.Converters"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              Height="auto" Width="auto">
-    <Grid>
-        
-       
-            
-        
-            
+    <UserControl.Resources>
+        <converter:DateConverter x:Key="DateConverter"/>
+        <converter:BoolInverterConverter x:Key="BoolInverterConverter"/>
+        <converter:GioiConverter x:Key="GioiConverter"/>
+    </UserControl.Resources>
+    
+    <!-- Phần về bí tích-->
+    <Grid Margin="10,0" >
+        <materialDesign:Card  UniformCornerRadius="6" Padding="8">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Height="60" Grid.Row="0">
+                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}">Thông tin về các bí tích</TextBlock>
+                </StackPanel>
+                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}"  />
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Top">
+                        <StackPanel Height="30">
+                            <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}">Bí Tích Rửa tội</TextBlock>
+                        </StackPanel>
+                        <StackPanel>
+                            <DatePicker x:Name="NgayRTtxtbx"  
+                                                materialDesign:HintAssist.Hint="Ngày rửa tội (dd/mm/yyyy)"
+                                                Text="{Binding BiTich.NgayRuaToi,  Converter={StaticResource DateConverter}, Mode=TwoWay}"    
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="NoiRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Tại" 
+                                             Text="{Binding BiTich.NoiRuaToi}"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="SoRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Số" 
+                                             Text="{Binding BiTich.SoRuaToi}"     
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="NgRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Do" 
+                                             Text="{Binding BiTich.NguoiRuaToi}"    
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="NgDDRTtxtbx"  
+                                             materialDesign:HintAssist.Hint="Người Đỡ Đầu"
+                                             Text="{Binding BiTich.NguoiDoDauRT}"    
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Grid Grid.Column="1" Margin="10">
+                        <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 1 0" />
+                    </Grid>
+                    <StackPanel VerticalAlignment="Top" Grid.Column="2">
+                        <StackPanel Height="30">
+                            <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}">Bí Tích Thánh Thể</TextBlock>
+                        </StackPanel>
+                        <StackPanel>
+                            <DatePicker x:Name="NgayRLLDtxtbx"  
+                                                materialDesign:HintAssist.Hint="Ngày RLLĐ (dd/mm/yyyy)" 
+                                                Text="{Binding BiTich.NgayRLLD,  Converter={StaticResource DateConverter}, Mode=TwoWay}" 
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="NoiRLLDtxtbx"  
+                                             materialDesign:HintAssist.Hint="Tại"
+                                             Text="{Binding BiTich.NoiRLLD}"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="SoRLLDtxtbx"  
+                                             materialDesign:HintAssist.Hint="Số" 
+                                             Text="{Binding BiTich.SoRLLD}"    
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Grid Grid.Column="3" Margin="10">
+                        <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 1 0" />
+                    </Grid>
+                    <StackPanel VerticalAlignment="Top" Grid.Column="4" >
+                        <StackPanel Height="30">
+                            <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}">Bí Tích Thêm Sức</TextBlock>
+                        </StackPanel>
+                        <StackPanel>
+                            <DatePicker x:Name="NgayTStxtbx"  
+                                                materialDesign:HintAssist.Hint="Ngày thêm sức (dd/mm/yyyy)"
+                                                Text="{Binding BiTich.NgayThemSuc,  Converter={StaticResource DateConverter}, Mode=TwoWay}"
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="NoiTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Tại" 
+                                             Text="{Binding BiTich.NoiThemSuc}" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="SoTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Số" 
+                                             Text="{Binding BiTich.SoThemSuc}" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="NgTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Do" 
+                                             Text="{Binding BiTich.NguoiThemSuc}"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBox x:Name="NgDDTStxtbx"  
+                                             materialDesign:HintAssist.Hint="Người Đỡ Đầu"
+                                             Text="{Binding BiTich.NguoiDoDauTS}"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+
+        </materialDesign:Card>
     </Grid>
 </UserControl>

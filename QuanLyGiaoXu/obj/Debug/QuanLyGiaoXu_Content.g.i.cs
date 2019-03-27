@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("quanlygiaoxu.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("quanlygiaoxu.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/abc.jpg")]
 
 

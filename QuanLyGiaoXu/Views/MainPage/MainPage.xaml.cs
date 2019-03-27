@@ -29,9 +29,9 @@ namespace QuanLyGiaoXu.Views.MainPage
         }
 
 
-        private void Gioibtn_Click(object sender, RoutedEventArgs e)
+        private void GiaoDanbtn_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new CacGioiPage());
+            this.NavigationService.Navigate(new GiaoDanPage());
            
         }
     }

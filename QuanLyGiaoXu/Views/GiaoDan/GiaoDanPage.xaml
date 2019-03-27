@@ -1,0 +1,80 @@
+﻿<Page x:Class="QuanLyGiaoXu.Views.CacGioi.GiaoDanPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ViewModel="clr-namespace:QuanLyGiaoXu.ViewModels.GiaoDan"
+      xmlns:View="clr-namespace:QuanLyGiaoXu.Views.GiaoDan"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      Title="Các Giới">
+
+    <Page.Resources>
+        <DataTemplate DataType="{x:Type ViewModel:DanhSachGiaoDanViewModel}">
+            <View:DanhSachGiaoDan/>
+        </DataTemplate>
+        
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0" 
+            Background="#FF001970">
+                <Button Click="Button_Click" Height="50" Width="60" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Top"  >
+                    <materialDesign:PackIcon Kind="ArrowLeft" Height="30" Width="30" Foreground="#FFFFFFFF" />
+                </Button>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1"   >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="#303f9f"  >
+                <TextBlock Text="Quản lý Giáo Dân" VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignTitleTextBlock}" Margin="10,0,0,15" Foreground="#FFFFFFFF" />
+                <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 1 0" />
+            </Grid>
+
+            <Grid Grid.Row="1">
+                
+                <ListView x:Name="ListViewMenu" 
+                          FontSize="18"
+                          SelectionChanged="ListViewMenu_SelectionChanged"        
+                          ItemsSource="{Binding GiaoDanMenu}"
+                          SelectedIndex="0" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Kind="{Binding Icon}" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="{Binding Name}" Style="{StaticResource MaterialDesignSubheadingTextBlock}" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+                </ListView>
+                
+                <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 1 0" />
+            </Grid>
+        </Grid>
+        <!--<Grid Grid.Column="1" Grid.Row="0" >
+            <TextBlock x:Name="TieuDetxt" Text="{Binding SelectedItem.Name, ElementName=ListViewMenu}" 
+                      Style="{StaticResource MaterialDesignTitleTextBlock}" Margin="10" FontSize="25" Foreground="White"/>
+            <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 0 1" />
+
+        </Grid>-->
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+            <ContentControl x:Name="ChucNangCtrl"/>
+        </Grid>
+
+    </Grid>
+    
+    
+</Page>

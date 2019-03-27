@@ -19,9 +19,9 @@
         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Margin="15">
                 <Button x:Name="Gioibtn" 
-                        Click="Gioibtn_Click" 
-                        Content="Các Giới" 
-                        Width="250" Height="250" Background="#FFB7733A" FontSize="48" />
+                        Click="GiaoDanbtn_Click" 
+                        Content="Giáo Dân" 
+                        Width="250" Height="250" Background="#FF303F9F" FontSize="48" />
             </StackPanel>
             <StackPanel Margin="15">
                 <Button x:Name="KhoaHocbtn" 

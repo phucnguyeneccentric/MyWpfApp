@@ -9,8 +9,8 @@ namespace QuanLyGiaoXu.ViewModels.BiTich
 {
     public class SoThemSucViewModel :BiTichViewModelBase
     {
-        public override string Name => InventoryHelper.SoThemSuc;
+        public override string Name => GiaoXuHelper.SoThemSuc;
 
-        public override string Icon => InventoryHelper.SoThemSucIcon;
+       // public override string Icon => GiaoXuHelper.SoThemSucIcon;
     }
 }

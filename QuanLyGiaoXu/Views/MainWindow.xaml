@@ -14,5 +14,5 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Source="MainPage/MainPage.xaml"          
-        Title="Quan Ly Giao Xu" Height="600" Width="1200" WindowStartupLocation="CenterScreen"/>
+        Title="Quản Lý Giáo Xứ" Height="600" Width="1200" WindowStartupLocation="CenterScreen"/>
  
