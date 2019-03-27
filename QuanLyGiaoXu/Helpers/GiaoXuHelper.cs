@@ -57,45 +57,31 @@ namespace QuanLyGiaoXu.Helpers
             return _firstName.Trim();
         }
 
-        public static string convert(String str)
-        {
+        public static string ToFirstUpper(string s)  
+        {  
+            if (String.IsNullOrEmpty(s))  
+                return s;  
 
-            // Create a char array of 
-            // given String 
-            char[] ch = str.ToCharArray();
+            string result = "";  
 
-            for (int i = 0; i < str.Length; i++)
-            {
+            //lấy danh sách các từ  
 
-                // If first character of a 
-                // word is found 
-                if (i == 0 && ch[i] != ' ' ||
-                    ch[i] != ' ' && ch[i - 1] == ' ')
-                {
+            string[] words = s.Split(' ');  
 
-                    // If it is in lower-case 
-                    if (ch[i] >= 'a' && ch[i] <= 'z')
-                    {
+            foreach (string word in words)  
+            {  
+                // từ nào là các khoảng trắng thừa thì bỏ  
+                if (word.Trim() != "")  
+                {  
+                    if (word.Length > 1)  
+                        result += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower() + " ";  
+                    else  
+                        result += word.ToUpper() + " ";  
+                }  
 
-                        // Convert into Upper-case 
-                        ch[i] = (char)(ch[i] - 'a' + 'A');
-                    }
-                }
-
-                // If apart from first character 
-                // Any one is in Upper-case 
-                else if (ch[i] >= 'A' && ch[i] <= 'Z')
-
-                    // Convert into Lower-Case 
-                    ch[i] = (char)(ch[i] + 'a' - 'A');
-            }
-
-            // Convert the char array to 
-            // equivalent String 
-            String st = new String(ch);
-
-            return st;
-        }
+            }  
+            return result.Trim();  
+        } 
 
         public static DateTime GetFirstDateOfWeek(DateTime dayInWeek, DayOfWeek RunningDay)  //RunningDay is Schedular Running day 
         {
