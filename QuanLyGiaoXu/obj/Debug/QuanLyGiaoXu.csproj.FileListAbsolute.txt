@@ -157,3 +157,6 @@ C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\obj\Debug\Views\GiaoDan\ThemGi
 C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\obj\Debug\Views\GiaoDan\ChiTiet\ChiTietGiaoDan.g.cs
 C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\obj\Debug\Views\GiaoDan\ChiTiet\ChiTietGiaoDan.baml
 C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\bin\Debug\System.Collections.Immutable.dll
+C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\obj\Debug\Views\GiaoDan\HoGiaDinh.g.cs
+C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\obj\Debug\ResourceDictionary\CustomScrollViewer.baml
+C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\obj\Debug\Views\GiaoDan\HoGiaDinh.baml

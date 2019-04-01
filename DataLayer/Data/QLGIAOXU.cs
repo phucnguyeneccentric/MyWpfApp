@@ -18,7 +18,7 @@ namespace DataLayer
         public virtual DbSet<GiaDinh> GiaDinh { get; set; }
         public virtual DbSet<GiaoDan> GiaoDan { get; set; }
         public virtual DbSet<GiaoLy> GiaoLy { get; set; }
-        public virtual DbSet<Gioi> Gioi { get; set; }
+        public virtual DbSet<GiaoHo> GiaoHo { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -62,28 +62,6 @@ namespace DataLayer
                 .WithRequired(e => e.GiaoDan)
                 .HasForeignKey(e => e.IDGiaoDan)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<GiaoDan>()
-                .HasMany(e => e.DiaChi)
-                .WithRequired(e => e.GiaoDan)
-                .HasForeignKey(e => e.IDGiaoDan)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<GiaoDan>()
-                .HasMany(e => e.Gioi)
-                .WithRequired(e => e.GiaoDan)
-                .HasForeignKey(e => e.IDGiaoDan)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<GiaoDan>()
-                .HasMany(e => e.GiaoDan1)
-                .WithOptional(e => e.GiaoDan2)
-                .HasForeignKey(e => e.Cha);
-
-            modelBuilder.Entity<GiaoDan>()
-                .HasMany(e => e.GiaoDan11)
-                .WithOptional(e => e.GiaoDan3)
-                .HasForeignKey(e => e.Me);
 
             modelBuilder.Entity<GiaoLy>()
                 .Property(e => e.ChuongTrinhGiaoLy)

@@ -13,10 +13,6 @@ namespace DataLayer
         public GiaoDan()
         {
             BiTich = new HashSet<BiTich>();
-            DiaChi = new HashSet<DiaChi>();
-            Gioi = new HashSet<Gioi>();
-            GiaoDan1 = new HashSet<GiaoDan>();
-            GiaoDan11 = new HashSet<GiaoDan>();
         }
 
         public int ID { get; set; }
@@ -36,31 +32,43 @@ namespace DataLayer
         [Column(TypeName = "date")]
         public DateTime NgaySinh { get; set; }
 
+        [StringLength(50)]
+        public string NoiSinh { get; set; }
+
+        public byte[] AnhDaiDien { get; set; }
+
+        /// <summary>
+        /// gioi cua giao dan:
+        /// 0. gioi thieu nhi
+        /// 1. gioi tre
+        /// 2. gioi gia truong
+        /// 3. gioi hien mau
+        /// 4. gioi cao nien
+        /// </summary>
+        [Required]
+        public int Gioi { get; set; }
+
         public bool GioiTinh { get; set; }
 
-        public int? Cha { get; set; }
+        /// <summary>
+        /// tinh hinh hien tai cua giao dan
+        /// 1. dang sinh hoat trong xu
+        /// 2. da chuyen xu
+        /// 3. da qua doi
+        /// </summary>
+        [Required]
+        public int TinhTrang { get; set; }
 
-        public int? Me { get; set; }
+        [StringLength(20)]
+        public string NgheNghiep { get; set; }
+
+
 
         public bool Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BiTich> BiTich { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DiaChi> DiaChi { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Gioi> Gioi { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GiaoDan> GiaoDan1 { get; set; }
-
-        public virtual GiaoDan GiaoDan2 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GiaoDan> GiaoDan11 { get; set; }
-
-        public virtual GiaoDan GiaoDan3 { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\App.xaml;;
+FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\ResourceDictionary\CustomScrollViewer.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\BiTich\BiTichPage.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\BiTich\SoRLLD.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\BiTich\SoRuaToi.xaml;;
@@ -7,6 +8,7 @@ FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\BiTich\SoThemSuc.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\GiaoDan\ChiTiet\ChiTietGiaoDan.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\GiaoDan\GiaoDanPage.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\GiaoDan\DanhSachGiaoDan.xaml;;
+FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\GiaoDan\HoGiaDinh.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\GiaoDan\ThemGiaoDan.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\MainPage\MainPage.xaml;;
 FC:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\Views\MainWindow.xaml;;

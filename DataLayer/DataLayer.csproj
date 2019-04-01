@@ -67,13 +67,13 @@
     <Compile Include="BiTichProvider.cs" />
     <Compile Include="Data\ChuongTrinhGiaoLy.cs" />
     <Compile Include="Data\DiaChi.cs" />
+    <Compile Include="Data\GiaoHo.cs" />
     <Compile Include="DiaChiProvider.cs" />
     <Compile Include="Data\GiaDinh.cs" />
     <Compile Include="GiaDinhProvider.cs" />
     <Compile Include="Data\GiaoDan.cs" />
     <Compile Include="GiaoDanProvider.cs" />
     <Compile Include="Data\GiaoLy.cs" />
-    <Compile Include="Data\Gioi.cs" />
     <Compile Include="GioiProvider.cs" />
     <Compile Include="Data\QLGIAOXU.cs" />
     <Compile Include="Migrations\201903191510174_NotRequireDiachi.cs" />

@@ -21,10 +21,6 @@ namespace QuanLyGiaoXu.Helpers
 
         #endregion
 
-       
-
-
-
         public static string GetSaveFilePath()
         {
             string DirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);

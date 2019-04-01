@@ -11,26 +11,26 @@ namespace DataLayer
     {
         public int ID { get; set; }
 
-        public int IDGiaoDan { get; set; }
+        public int IDGiaDinh { get; set; }
 
-        [StringLength(100)]
-        public string DiaChiNha { get; set; }
+        [StringLength(50)]
+        public string SoNha { get; set; }
+
+        [StringLength(50)]
+        public string Ap { get; set; }
+
+        [StringLength(50)]
+        public string Xa { get; set; }
+
+        [StringLength(50)]
+        public string Huyen { get; set; }
+
+        [StringLength(50)]
+        public string Tinh { get; set; }
 
         [Required]
         [StringLength(20)]
         public string GiaoHo { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string GiaoXu { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string GiaoHat { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string GiaoPhan { get; set; }
 
         public DateTime NgayChuyenDen { get; set; }
 
@@ -38,6 +38,6 @@ namespace DataLayer
 
         public bool Status { get; set; }
 
-        public virtual GiaoDan GiaoDan { get; set; }
+        public virtual GiaDinh GiaDinh { get; set; }
     }
 }

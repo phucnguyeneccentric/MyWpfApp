@@ -35,7 +35,7 @@ namespace QuanLyGiaoXu.Views.GiaoDan.ChiTiet
         }
         private void HoTentxtbx_LostFocus(object sender, RoutedEventArgs e)
         {
-            HoTentxtbx.Text = GiaoXuHelper.convert(HoTentxtbx.Text);
+            HoTentxtbx.Text = GiaoXuHelper.ToFirstUpper(HoTentxtbx.Text);
         }
         private void addGioilist(List<string> GioiList)
         {

@@ -76,45 +76,42 @@
             </materialDesign:Card>
 
             <materialDesign:Card Grid.Row="2" Margin="10,0,10,10">
-
-                <ScrollViewer>
-                    <ListView Name="ThieuNhilst" ItemsSource="{Binding ListGiaoDan}" HorizontalAlignment="Left"  >
-                        <ListView.View>
-                            <GridView >
-                                <GridViewColumn Header="Mã" 
+                <ListView Name="GiaoDanlst" ItemsSource="{Binding ListGiaoDan}" HorizontalAlignment="Left"  >
+                    <ListView.View>
+                        <GridView >
+                            <GridViewColumn Header="Mã" 
                                         DisplayMemberBinding="{Binding MaGiaoDan}" Width="auto" />
-                                <GridViewColumn Header="Tên Thánh" 
+                            <GridViewColumn Header="Tên Thánh" 
                                         DisplayMemberBinding="{Binding TenThanh}" Width="auto"/>
-                                <GridViewColumn Header="Họ"
-                                        DisplayMemberBinding="{Binding Ho}"  Width="auto"/>
-                                <GridViewColumn Header="Tên" 
+                            <GridViewColumn Header="Họ"
+                                        DisplayMemberBinding="{Binding Ho}" Width="auto"/>
+                            <GridViewColumn Header="Tên" 
                                         DisplayMemberBinding="{Binding Ten}"  Width="auto"/>
-                                <GridViewColumn Header="Ngày Sinh"
+                            <GridViewColumn Header="Ngày Sinh"
                                         DisplayMemberBinding="{Binding NgaySinh, StringFormat=dd/MM/yyyy}" Width="100"/>
-                                <GridViewColumn Header="Giới tính"
+                            <GridViewColumn Header="Giới tính"
                                         DisplayMemberBinding="{Binding GioiTinh, Converter={StaticResource GenderConverter}}" Width="100"/>
-                                <GridViewColumn Header="Giáo Họ"
+                            <GridViewColumn Header="Giáo Họ"
                                         DisplayMemberBinding="{Binding GiaoHo}" Width="100"/>
-                                <GridViewColumn Header="Giới"
+                            <GridViewColumn Header="Giới"
                                         DisplayMemberBinding="{Binding Gioi, Converter={StaticResource GioiConverter}}" Width="100"/>
-                                <GridViewColumn Width="auto">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Height="17" Width="17"
+                            <GridViewColumn Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Height="17" Width="17"
                                                 Background="#666ad1"
                                                 materialDesign:HintAssist.Hint="Thông tin chi tiết"
                                                 Command="{Binding ShowChiTietCommand}" >
-                                                <materialDesign:PackIcon Kind="EyeOutline" Width="10" Height="10"/>
-                                            </Button>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                            </GridView>
+                                            <materialDesign:PackIcon Kind="EyeOutline" Width="10" Height="10"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
 
-                        </ListView.View>
+                    </ListView.View>
 
-                    </ListView>
-                </ScrollViewer>
+                </ListView>
             </materialDesign:Card>
             <Grid Grid.Row="3" 
                   Background="#666ad1" >

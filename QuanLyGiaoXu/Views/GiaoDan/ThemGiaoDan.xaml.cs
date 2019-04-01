@@ -38,7 +38,7 @@ namespace QuanLyGiaoXu.Views.GiaoDan
 
         private void HoTentxtbx_LostFocus(object sender, RoutedEventArgs e)
         {
-            HoTentxtbx.Text = GiaoXuHelper.convert(HoTentxtbx.Text);
+            HoTentxtbx.Text = GiaoXuHelper.ToFirstUpper(HoTentxtbx.Text);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)

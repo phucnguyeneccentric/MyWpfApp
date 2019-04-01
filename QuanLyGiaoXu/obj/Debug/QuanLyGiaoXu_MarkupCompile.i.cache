@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\theba\source\repos\MyWpfApp\QuanLyGiaoXu\App.xaml
-141917988243
+15193125701
 
 51-852648013
-132770010837
-Views\BiTich\BiTichPage.xaml;Views\BiTich\SoRLLD.xaml;Views\BiTich\SoRuaToi.xaml;Views\BiTich\SoThemSuc.xaml;Views\GiaoDan\ChiTiet\ChiTietGiaoDan.xaml;Views\GiaoDan\GiaoDanPage.xaml;Views\GiaoDan\DanhSachGiaoDan.xaml;Views\GiaoDan\HoGiaDinh.xaml;Views\GiaoDan\ThemGiaoDan.xaml;Views\MainPage\MainPage.xaml;Views\MainWindow.xaml;Views\ThieuNhi\DanhSachThieuNhi.xaml;Views\ThieuNhi\ThemThieuNhi.xaml;Views\ThieuNhi\ThongTinTN.xaml;
+133-508777486
+ResourceDictionary\CustomScrollViewer.xaml;Views\BiTich\BiTichPage.xaml;Views\BiTich\SoRLLD.xaml;Views\BiTich\SoRuaToi.xaml;Views\BiTich\SoThemSuc.xaml;Views\GiaoDan\ChiTiet\ChiTietGiaoDan.xaml;Views\GiaoDan\GiaoDanPage.xaml;Views\GiaoDan\DanhSachGiaoDan.xaml;Views\GiaoDan\HoGiaDinh.xaml;Views\GiaoDan\ThemGiaoDan.xaml;Views\MainPage\MainPage.xaml;Views\MainWindow.xaml;Views\ThieuNhi\DanhSachThieuNhi.xaml;Views\ThieuNhi\ThemThieuNhi.xaml;Views\ThieuNhi\ThongTinTN.xaml;
 
-False
+True
 

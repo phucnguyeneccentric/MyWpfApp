@@ -12,7 +12,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:converter="clr-namespace:QuanLyGiaoXu.Converters"
              mc:Ignorable="d" Background="#efefef"
-             Width="800" Height="500">
+             Width="900" Height="600">
     <UserControl.Resources>
         <converter:DateConverter x:Key="DateConverter"/>
         <converter:BoolInverterConverter x:Key="BoolInverterConverter"/>
@@ -136,7 +136,7 @@
                     <!--#region cot phai-->
                     <StackPanel Orientation="Vertical" Grid.Column="2">
                         <!--#region dia chi, giao ho, gioi-->
-                        <materialDesign:Card Margin="10" UniformCornerRadius="6" Padding="8">
+                        <materialDesign:Card Margin="10,0,0,10" UniformCornerRadius="6" Padding="8">
                             <StackPanel VerticalAlignment="Top">
                                 <!--tieu de-->
                                 <StackPanel Height="60">
@@ -173,44 +173,6 @@
                                              SelectedIndex="{Binding Gioi, ValidatesOnDataErrors = True }"
                                              Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="15">
                                     </ComboBox>
-                                </StackPanel>
-                            </StackPanel>
-                        </materialDesign:Card>
-                        <!--#endregion-->
-                        
-                        <!--#region cha me-->
-                        <materialDesign:Card Margin="10" UniformCornerRadius="6" Padding="8">
-                            <StackPanel VerticalAlignment="Top">
-                                <StackPanel Height="60">
-                                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}">Thông tin về cha mẹ</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" >
-                                    <TextBox x:Name="chatxt"  
-                                             materialDesign:HintAssist.Hint="Mã CN của Cha"
-                                             Text="{Binding CodeCha, ValidatesOnDataErrors=True}"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="LostFocus">
-                                                <i:InvokeCommandAction Command="{Binding CheckCodeCha}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </TextBox>
-                                    <TextBlock Text="{Binding FullNameCha}" Style="{StaticResource MaterialDesignSubheadingTextBlock}" FontSize="15" Margin="10" />
-                                </StackPanel>
-
-                                <StackPanel  Orientation="Horizontal" >
-                                    <TextBox x:Name="metxt"  
-                                             materialDesign:HintAssist.Hint="Mã CN của Mẹ" 
-                                             Text="{Binding CodeMe, ValidatesOnDataErrors=True}"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="LostFocus">
-                                                <i:InvokeCommandAction Command="{Binding CheckCodeMe}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </TextBox>
-                                    <TextBlock Text="{Binding FullNameMe}" FontSize="15" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="10"/>
-
                                 </StackPanel>
                             </StackPanel>
                         </materialDesign:Card>

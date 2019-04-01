@@ -9,34 +9,27 @@ namespace DataLayer
     [Table("GiaDinh")]
     public partial class GiaDinh
     {
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GiaDinh()
+        {
+            DiaChi = new HashSet<DiaChi>();
+        }
         public int ID { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(20)]
         public string MaGiaDinh { get; set; }
 
         public int ChuHo { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string DiaChi { get; set; }
+        public int NguoiNam { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string GiaoHo { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string GiaoXu { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string GIaoHat { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string GiaoPhan { get; set; }
+        public int NguoiNu { get; set; }
 
         public bool Status { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DiaChi> DiaChi { get; set; }
     }
 }
