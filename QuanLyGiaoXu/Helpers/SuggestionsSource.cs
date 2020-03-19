@@ -1,6 +1,8 @@
 ﻿using BusinessTier;
+using EntityTier;
 using MaterialDesignExtensions.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,24 +30,26 @@ namespace QuanLyGiaoXu.Mediators
         }
     }
 
-    public class GiaoXuSuggestionsSource : TextBoxSuggestionsSource
-    {
-        private List<string> m_danhsachgiaoxu;
+    //public class GiaDinhSuggestionsSource : IAutocompleteSource
+    //{
+    //    private List<GiaDinhEntity> m_danhsachgiadinh;
 
-        public GiaoXuSuggestionsSource()
-        {
-            m_danhsachgiaoxu = DiaChiServices.GetListGiaoHo();
+    //    public GiaoXuSuggestionsSource()
+    //    {
+    //        m_danhsachgiaoxu = DiaChiServices.GetListGiaoHo();
 
 
-        }
+    //    }
 
-        public override IEnumerable<string> Search(string searchTerm)
-        {
-            searchTerm = searchTerm ?? string.Empty;
-            searchTerm = searchTerm.ToLower();
+    //    public  IEnumerable Search(string searchTerm)
+    //    {
+    //        searchTerm = searchTerm ?? string.Empty;
+    //        searchTerm = searchTerm.ToLower();
 
-            return m_danhsachgiaoxu.Where(item => item.ToLower().Contains(searchTerm));
-        }
-    }
+    //        return m_danhsachgiadinh.Where(item => item.ToLower().Contains(searchTerm));
+    //    }
+
+       
+    //}
 
 }

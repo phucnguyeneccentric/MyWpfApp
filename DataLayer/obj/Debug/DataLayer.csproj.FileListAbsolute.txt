@@ -108,6 +108,12 @@ C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.csproj.CoreCo
 C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
 C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.dll
 C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.pdb
-C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.NotRequireDiachi.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.ChangeIDGiaDinh.resources
 C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.csproj.GenerateResource.cache
-C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.UpdateLengthDiaChi.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.RemoveMaGiaoDan.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.RemoveQuanHeChuHo.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.RemoveTanTong.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.AddChaMe.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.TenThanh.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.NgaySinhCanBeNull.resources
+C:\Users\theba\source\repos\MyWpfApp\DataLayer\obj\Debug\DataLayer.Migrations.BigUpdateNgaySinh.resources

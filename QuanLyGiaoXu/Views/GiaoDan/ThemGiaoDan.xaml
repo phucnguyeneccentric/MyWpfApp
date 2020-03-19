@@ -10,7 +10,6 @@
              xmlns:converter="clr-namespace:QuanLyGiaoXu.Converters"
              xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-             Loaded="UserControl_Loaded"
              Background="#efefef"
              xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              mc:Ignorable="d" 
@@ -19,6 +18,12 @@
         <converter:DateConverter x:Key="DateConverter"/>
         <converter:BoolInverterConverter x:Key="BoolInverterConverter"/>
         <converter:GioiConverter x:Key="GioiConverter"/>
+        
+        <DataTemplate x:Key="itemGiaDinhTemplate">
+            <StackPanel>
+                <TextBlock FontSize="15" Text="{Binding Path=TenGiaDinh}" VerticalAlignment="Center" Margin="24,0,0,0" />
+            </StackPanel>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -51,23 +56,14 @@
                                 <StackPanel Height="60">
                                     <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}">Thông tin cá nhân</TextBlock>
                                 </StackPanel>
-                                <Grid Height="40">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="90"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" VerticalAlignment="Center" FontSize="15" Text="Mã cá nhân:"/>
-                                    <TextBlock x:Name="txtmasotxtbx" Grid.Column="1" 
-                                             materialDesign:HintAssist.Hint="Mã cá nhân" 
-                                             Text="{Binding MaGiaoDan}"
-                                             VerticalAlignment="Center" HorizontalAlignment="Left"
-                                             Style="{StaticResource MaterialDesignTitleTextBlock}" FontSize="20" Foreground="Red"  />
-                                </Grid>
                                 <StackPanel>
                                     <TextBox x:Name="TenThanhtxtbx" 
-                                             materialDesign:HintAssist.Hint="Tên Thánh" 
-                                             Text="{Binding TenThanh}"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15"  />
+                                             materialDesign:HintAssist.Hint="Tên Thánh (*)" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15">
+                                        <TextBox.Text>
+                                            <Binding Path="TenThanh" ValidatesOnDataErrors="True"/>
+                                        </TextBox.Text>
+                                    </TextBox>
                                 </StackPanel>
                                 <StackPanel >
                                     <TextBox x:Name="HoTentxtbx" LostFocus="HoTentxtbx_LostFocus" 
@@ -81,7 +77,16 @@
                                 <StackPanel >
                                     <DatePicker x:Name="NgaySinhtxtbx"  
                                                 materialDesign:HintAssist.Hint="Ngày Sinh (*)" 
-                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontSize="15">
+                                                 FontSize="15">
+                                        <DatePicker.Style>
+                                            <Style TargetType="DatePicker" BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=NamSinhchk, Path=IsChecked}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DatePicker.Style>
                                         <DatePicker.Text>
                                             <Binding Path="NgaySinh"
                                                      Converter="{StaticResource DateConverter}"
@@ -93,6 +98,39 @@
                                             </Binding>
                                         </DatePicker.Text>
                                     </DatePicker>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox Style="{StaticResource MaterialDesignCheckBox}"
+                                                  Name="NamSinhchk"
+                                                  IsChecked="{Binding NamSinhchk, Mode=TwoWay}"
+                                                  Content="Chỉ có năm sinh"/>
+                                        <TextBox Grid.Column="1" x:Name="NamSinhtxtbx"
+                                                  materialDesign:HintAssist.Hint="Năm sinh"
+                                                  FontSize="15">
+                                            <TextBox.Text>
+                                                <Binding Path="NamSinh" ValidatesOnDataErrors="True"/>
+                                            </TextBox.Text>
+                                            <TextBox.Style>
+                                                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=NamSinhchk, Path=IsChecked}" Value="False">
+                                                            <Setter Property="IsEnabled" Value="False"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBox.Style>
+                                        </TextBox>
+                                    </Grid>
+
+                                </StackPanel>
+                                <!-- Noi Sinh-->
+                                <StackPanel >
+                                    <TextBox x:Name="NoiSinhtxtbx" materialDesign:HintAssist.Hint="Nơi Sinh"
+                                             Text="{Binding NoiSinh}"
+                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15"/>
 
                                 </StackPanel>
                                 <StackPanel >
@@ -110,7 +148,6 @@
                                             HorizontalAlignment="Left" VerticalAlignment="Center"
                                                  Grid.Column="1" IsChecked="{Binding GioiTinh, Mode=TwoWay}"
                                                  FontSize="15">
-
                                             Nam
                                         </RadioButton>
                                         <RadioButton 
@@ -123,34 +160,6 @@
                                     </Grid>
 
 
-                                </StackPanel>
-
-                            </StackPanel>
-                        </materialDesign:Card>
-                        <!--#endregion-->
-
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--duong chia cot-->
-                    <Grid Grid.Column="1" Margin="10">
-                        <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 1 0" />
-                    </Grid>
-
-                    <!--#region cot phai-->
-                    <StackPanel Orientation="Vertical" Grid.Column="2">
-                        <!--#region dia chi, giao ho, gioi-->
-                        <materialDesign:Card Margin="10,0,0,10" UniformCornerRadius="6" Padding="8">
-                            <StackPanel VerticalAlignment="Top">
-                                <!--tieu de-->
-                                <StackPanel Height="60">
-                                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}">Thông tin về địa chỉ, giáo họ...</TextBlock>
-                                </StackPanel>
-                                <!--dia chi-->
-                                <StackPanel >
-                                    <TextBox x:Name="DiaChitxtbx"  
-                                             materialDesign:HintAssist.Hint="Địa Chỉ" 
-                                             Text="{Binding DiaChi}"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" />
                                 </StackPanel>
                                 <!--giao ho-->
                                 <StackPanel >
@@ -169,6 +178,68 @@
 
                                     </controls:TextBoxSuggestions>
 
+                                </StackPanel>
+                                <!--ten cha-->
+                                <StackPanel >
+                                    <TextBox x:Name="TenChatxtbx" materialDesign:HintAssist.Hint="Tên Thánh, họ tên cha"
+                                             Text="{Binding TenCha}"
+                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15"/>
+
+                                </StackPanel>
+                                <!--ten me-->
+                                <StackPanel >
+                                    <TextBox x:Name="TenMetxtbx" materialDesign:HintAssist.Hint="Tên Thánh, họ tên mẹ"
+                                             Text="{Binding TenMe}"
+                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15"/>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </materialDesign:Card>
+                        <!--#endregion-->
+
+                       
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--duong chia cot-->
+                    <Grid Grid.Column="1" Margin="10">
+                        <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 1 0" />
+                    </Grid>
+
+                    <!--#region cot phai-->
+                    <StackPanel Orientation="Vertical" Grid.Column="2">
+                        <!--#region dia chi, giao ho, gioi-->
+                        <materialDesign:Card Margin="10,0,0,10" UniformCornerRadius="6" Padding="8">
+                            <StackPanel VerticalAlignment="Top">
+                                <!--tieu de-->
+                                <StackPanel Height="60">
+                                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}">Thông tin khác</TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Rectangle Width="75" Height="100">
+                                        
+                                    </Rectangle>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignCaptionTextBlock}" 
+                                        Text="Ảnh đại diện"/>
+                                    
+                                </StackPanel>
+                                
+                                <StackPanel>
+                                    <TextBox 
+                                             materialDesign:HintAssist.Hint="Nghề Nghiệp" 
+                                             Text="{Binding NgheNghiep}"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15"  />
+                                </StackPanel>
+                                <!-- so dien thoai-->
+                                <StackPanel>
+                                    <TextBox x:Name="SDTtxtbx"
+                                             materialDesign:HintAssist.Hint="Số Điện Thoại" 
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15">
+                                        <TextBox.Text>
+                                            <Binding Path="SoDienThoai" ValidatesOnDataErrors="True"/>
+                                        </TextBox.Text>
+                                    </TextBox>
                                 </StackPanel>
                                 <!--gioi-->
                                 <StackPanel >
@@ -204,12 +275,13 @@
                                 <Style.Triggers>
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ElementName= TenThanhtxtbx, Path=(Validation.HasError)}" Value="false" />
                                             <Condition Binding="{Binding ElementName= HoTentxtbx, Path=(Validation.HasError)}" Value="false" />
                                             <Condition Binding="{Binding ElementName= NgaySinhtxtbx, Path=(Validation.HasError)}" Value="false" />
+                                            <Condition Binding="{Binding ElementName= NamSinhtxtbx, Path=(Validation.HasError)}" Value="false" />
                                             <Condition Binding="{Binding ElementName= GiaoHotxtbx, Path=(Validation.HasError)}" Value="false" />
                                             <Condition Binding="{Binding ElementName= Gioicbx, Path=(Validation.HasError)}" Value="false" />
-                                            <Condition Binding="{Binding ElementName= chatxt, Path=(Validation.HasError)}" Value="false" />
-                                            <Condition Binding="{Binding ElementName= metxt, Path=(Validation.HasError)}" Value="false" />
+                                            <Condition Binding="{Binding ElementName= SDTtxtbx, Path=(Validation.HasError)}" Value="false" />
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="IsEnabled" Value="True" />
                                     </MultiDataTrigger>

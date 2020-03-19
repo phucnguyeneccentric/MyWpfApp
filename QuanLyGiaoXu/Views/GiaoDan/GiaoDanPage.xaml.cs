@@ -22,8 +22,22 @@ namespace QuanLyGiaoXu.Views.CacGioi
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ChucNangCtrl.Content = ListViewMenu.SelectedItem;
+            if(ListGiaoDanMenu.SelectedIndex != -1)
+            {
+                HoatDongMucVu.SelectedIndex = -1;
+                ChucNangCtrl.Content = ListGiaoDanMenu.SelectedItem;
+            }
 
+        }
+
+        private void HoatDongMucVu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(HoatDongMucVu.SelectedIndex != -1)
+            {
+                ListGiaoDanMenu.SelectedIndex = -1;
+                ChucNangCtrl.Content = HoatDongMucVu.SelectedItem;
+            }
+           
         }
     }
 }

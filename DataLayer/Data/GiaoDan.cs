@@ -12,14 +12,12 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GiaoDan()
         {
-            BiTich = new HashSet<BiTich>();
+
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-
-        [Required]
-        [StringLength(16)]
-        public string MaGiaoDan { get; set; }
 
         [Required]
         [StringLength(20)]
@@ -29,11 +27,24 @@ namespace DataLayer
         [StringLength(50)]
         public string HoTen { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime NgaySinh { get; set; }
+        public int NgaySinh { get; set; }
+
+        public int ThangSinh { get; set; }
+
+        public int NamSinh { get; set; }
 
         [StringLength(50)]
         public string NoiSinh { get; set; }
+
+
+        [StringLength(30)]
+        public string GiaoHo { get; set; }
+
+        [StringLength(50)]
+        public string TenCha { get; set; }
+
+        [StringLength(50)]
+        public string TenMe { get; set; }
 
         public byte[] AnhDaiDien { get; set; }
 
@@ -50,24 +61,15 @@ namespace DataLayer
 
         public bool GioiTinh { get; set; }
 
-        /// <summary>
-        /// tinh hinh hien tai cua giao dan
-        /// 1. dang sinh hoat trong xu
-        /// 2. da chuyen xu
-        /// 3. da qua doi
-        /// </summary>
-        [Required]
-        public int TinhTrang { get; set; }
-
-        [StringLength(20)]
+        [StringLength(30)]
         public string NgheNghiep { get; set; }
 
-
+        [Phone]
+        public string SoDienThoai { get; set; }
 
         public bool Status { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BiTich> BiTich { get; set; }
+       
 
 
     }

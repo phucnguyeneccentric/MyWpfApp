@@ -3,6 +3,7 @@ using EntityTier;
 using MaterialDesignThemes.Wpf;
 using QuanLyGiaoXu.Helpers;
 using QuanLyGiaoXu.Mediators;
+using QuanLyGiaoXu.ViewModels.GiaoDan;
 using QuanLyGiaoXu.Views.GiaoDan.ChiTiet;
 using System;
 using System.Collections.Generic;
@@ -14,24 +15,14 @@ using System.Windows.Input;
 
 namespace QuanLyGiaoXu.ViewModels.CacGioi.ChiTietGiaoDan
 {
-    public class ChiTietGiaoDanViewModel : ViewModelBase
+    public class ChiTietGiaoDanViewModel : ThemGiaoDanViewModel
     {
         #region Fields
 
         #region giao dan
-        private int _id;
         private string _ho;
         private string _ten;
-        private string _magiaodan;
-        private string _tenthanh;
-        private DateTime _ngaysinh;
-        private bool _gioitinh;
-        private string _giaoho;
-        private string _diachinha;
-        private int _gioi;
-        private int? _cha;
-        private int? _me;
-
+        private string _ngthgnamsinh;
         #endregion
 
         private ICommand _chitietCommand;
@@ -40,42 +31,7 @@ namespace QuanLyGiaoXu.ViewModels.CacGioi.ChiTietGiaoDan
 
         #region Properties
         #region Thong tin giao dan
-        /// <summary>
-        /// id giao dan
-        /// </summary>
-        public int ID
-        {
-            get { return _id; }
-            set
-            {
-                _id = value;
-                OnPropertyChanged("ID");
-            }
-        }
-        /// <summary>
-        /// ma giao dan
-        /// </summary>
-        public string MaGiaoDan
-        {
-            get { return _magiaodan; }
-            set
-            {
-                _magiaodan = value;
-                OnPropertyChanged("MaGiaoDan");
-            }
-        }
-        /// <summary>
-        /// ten thanh
-        /// </summary>
-        public string TenThanh
-        {
-            get { return _tenthanh; }
-            set
-            {
-                _tenthanh = value;
-                OnPropertyChanged("TenThanh");
-            }
-        }
+        
         /// <summary>
         /// ho
         /// </summary>
@@ -101,86 +57,15 @@ namespace QuanLyGiaoXu.ViewModels.CacGioi.ChiTietGiaoDan
             }
         }
         /// <summary>
-        /// ngay sinh
+        /// birthday
         /// </summary>
-        public DateTime NgaySinh
+        public string NgThgNamsinh
         {
-            get { return _ngaysinh; }
+            get { return _ngthgnamsinh; }
             set
             {
-                _ngaysinh = value;
-                OnPropertyChanged("NgaySinh");
-            }
-        }
-        /// <summary>
-        /// gioi tinh
-        /// </summary>
-        public bool GioiTinh
-        {
-            get { return _gioitinh; }
-            set
-            {
-                _gioitinh = value;
-                OnPropertyChanged("GioiTinh");
-            }
-        }
-        /// <summary>
-        /// giao ho
-        /// </summary>
-        public string GiaoHo
-        {
-            get { return _giaoho; }
-            set
-            {
-                _giaoho = value;
-                OnPropertyChanged("GiaoHo");
-            }
-        }
-        /// <summary>
-        /// dia chi nha
-        /// </summary>
-        public string Diachinha
-        {
-            get => _diachinha; set
-            {
-                _diachinha = value;
-                OnPropertyChanged("Diachinha");
-            }
-        }
-        /// <summary>
-        /// thuoc gioi
-        /// thieu nhi: 0, gioi tre: 1, gia truong: 2, hien mau: 3, cao nien: 4, gioi khac :5
-        /// </summary>
-        public int Gioi
-        {
-            get => _gioi; set
-            {
-                _gioi = value;
-                OnPropertyChanged("Gioi");
-            }
-        }
-        /// <summary>
-        /// id cua cha
-        /// </summary>
-        public int? IDCha
-        {
-            get { return _cha; }
-            set
-            {
-                _cha = value;
-                OnPropertyChanged("IDCha");
-            }
-        }
-        /// <summary>
-        /// id cua me
-        /// </summary>
-        public int? IDMe
-        {
-            get { return _me; }
-            set
-            {
-                _me = value;
-                OnPropertyChanged("IDMe");
+                _ngthgnamsinh = value;
+                OnPropertyChanged("NgThgNamsinh");
             }
         }
         #endregion 
@@ -213,7 +98,7 @@ namespace QuanLyGiaoXu.ViewModels.CacGioi.ChiTietGiaoDan
             //let's set up!
             var view = new Views.GiaoDan.ChiTiet.ChiTietGiaoDan()
             {
-                DataContext = new ChiTietGiaoDanEditViewModel(ID, Ho, Ten, MaGiaoDan, TenThanh, NgaySinh, GioiTinh, Gioi, GiaoHo, Diachinha, IDCha, IDMe)
+                DataContext = new ChiTietGiaoDanEditViewModel(ID, TenThanh, Ho, Ten, NgaySinh, ThangSinh, NamSinh, GioiTinh, GiaoHo, Gioi, SoDienThoai)
             };
             //show the dialog
             var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
@@ -227,18 +112,15 @@ namespace QuanLyGiaoXu.ViewModels.CacGioi.ChiTietGiaoDan
             var _gd = GiaoDanServices.GetGiaoDanByID((int)eventArgs.Parameter);
             if(_gd != null)
             {
-                ID = _gd.id;
-                TenThanh = _gd.tenthanh;
-                MaGiaoDan = _gd.magiaodan;
-                Ho = GiaoXuHelper.SplitLastName(_gd.hoten);
-                Ten = GiaoXuHelper.SplitFirstName(_gd.hoten);
-                NgaySinh = _gd.ngaysinh;
-                GioiTinh = _gd.gioitinh;
-                GiaoHo = _gd.giaoho;
-                Gioi = _gd.gioi;
-                Diachinha = _gd.diachinha;
-                IDCha = _gd.cha;
-                IDMe = _gd.me;
+                ID = _gd.ID;
+                TenThanh = _gd.TenThanh;
+                Ho = GiaoXuHelper.SplitLastName(_gd.HoTen);
+                Ten = GiaoXuHelper.SplitFirstName(_gd.HoTen);
+                NgThgNamsinh = GiaoXuHelper.UnionDayMonthYear(_gd.NgaySinh,_gd.ThangSinh,_gd.NamSinh);
+                GioiTinh = _gd.GioiTinh;
+                GiaoHo = _gd.GiaoHo;
+                Gioi = _gd.Gioi;
+                SoDienThoai = _gd.SoDienThoai;
             }
 
             

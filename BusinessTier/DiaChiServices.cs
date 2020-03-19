@@ -11,14 +11,7 @@ namespace BusinessTier
         {
             return DiaChiProvider.GetListGiaoHo();
         }
-        public static DiaChi GetDiaChiByIDGiaoDan(int idgiaodan)
-        {
-            return DiaChiProvider.GetDiaChiByIDGiaoDan(idgiaodan);
-        }
-        public static int AddOrUpdateDiaChi(DiaChi diachi)
-        {
-            return DiaChiProvider.AddOrUpdateDiaChi(diachi);
-        }
+      
     }
     
 }

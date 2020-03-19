@@ -15,11 +15,14 @@ namespace DataLayer
         {
             DiaChi = new HashSet<DiaChi>();
         }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]
         [StringLength(20)]
-        public string MaGiaDinh { get; set; }
+        public string TenGiaDinh { get; set; }
 
         public int ChuHo { get; set; }
 

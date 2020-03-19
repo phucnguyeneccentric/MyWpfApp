@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Globalization;
+using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace QuanLyGiaoXu.ViewModels.GiaoDan
 {
@@ -18,38 +20,34 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
     {
         #region Fields
         private ITextBoxSuggestionsSource m_giaohoSuggestionsSource;
+        private IAutocompleteSource m_giadinhSuggestionsSource;
         #region giao dan
+
         private string _hoten;
         private int _id;
-        private string _magiaodan;
         private string _tenthanh;
-        private DateTime _ngaysinh;
-        private bool _gioitinh;
-        private int? _cha;
-        private int? _me;
-        #endregion
-
-        #region Dia Chi
-        private string _diachinha;
-        private string _giaoho;
-        private string _giaoxu;
-        private string _giaohat;
-        private string _giaophan;
-        private DateTime _ngaychuyenden;
-        private DateTime? _ngaychuyendi;
-        #endregion
-
-        #region Gioi
+        private int _ngaysinh;
+        private int _thangsinh;
+        private int _namsinh;
         private int _gioi;
-        private DateTime _ngaythamgia;
-        private DateTime? _ngayketthuc;
-        #endregion 
+        private string _noisinh;
+        private bool _gioitinh;
+        private string _giaoho;
+        private string _tencha;
+        private string _tenme;
+        private byte[] _anhdaidien;
+        private string _sodienthoai;
+        private string _nghenghiep;
+        #endregion
 
-        private string _fullnamecha;
-        private string _codecha;
-        private string _codeme;
-        private string _fullnameme;
-        private bool _isEditComplete;
+        #region tinh trang chuyen xu
+
+        
+        private DateTime _ngaychuyen { get; set; }
+        private string _noichuyen { get; set; }
+        private string _thuocgiaoxu { get; set; }
+        private string _thuocgiaophan { get; set; }
+        #endregion
 
         #region bi tich
         private string _NguoiRuaToi;
@@ -68,9 +66,7 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
         #endregion bi tich
 
         #region commands
-        private ICommand _creategiaodanCommand;
-        private ICommand _checkcodecha;
-        private ICommand _checkcodeme;
+       // private ICommand _creategiaodanCommand;
         #endregion commands
 
         #endregion Fields
@@ -82,12 +78,14 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
             {
                 return m_giaohoSuggestionsSource;
             }
-            set
+        }
+        public IAutocompleteSource GiaDinhSource
+        {
+            get
             {
-                m_giaohoSuggestionsSource = value;
+                return m_giadinhSuggestionsSource;
             }
         }
-
         #region thong tin giao dan
         /// <summary>
         /// id giao dan
@@ -102,18 +100,6 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
             }
         }
 
-        /// <summary>
-        /// ma giao dan
-        /// </summary>
-        public string MaGiaoDan
-        {
-            get { return _magiaodan; }
-            set
-            {
-                _magiaodan = value;
-                OnPropertyChanged("MaGiaoDan");
-            }
-        }
         /// <summary>
         /// ten thanh
         /// </summary>
@@ -141,7 +127,7 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
         /// <summary>
         /// ngay sinh
         /// </summary>
-        public DateTime NgaySinh
+        public int NgaySinh
         {
             get { return _ngaysinh; }
             set
@@ -151,27 +137,39 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
             }
         }
         /// <summary>
-        /// gioi tinh
+        /// thang sinh
         /// </summary>
-        public bool GioiTinh
+        public int ThangSinh
         {
-            get { return _gioitinh; }
+            get { return _thangsinh; }
             set
             {
-                _gioitinh = value;
-                OnPropertyChanged("GioiTinh");
+                _thangsinh = value;
+                OnPropertyChanged("ThangSinh");
             }
         }
         /// <summary>
-        /// dia chi
+        /// nam sinh
         /// </summary>
-        public string DiaChi
+        public int NamSinh
         {
-            get { return _diachinha; }
+            get { return _namsinh; }
             set
             {
-                _diachinha = value;
-                OnPropertyChanged("DiaChi");
+                _namsinh = value;
+                OnPropertyChanged("NamSinh");
+            }
+        }
+        /// <summary>
+        /// noi sinh
+        /// </summary>
+        public string NoiSinh
+        {
+            get { return _noisinh; }
+            set
+            {
+                _noisinh = value;
+                OnPropertyChanged("NoiSinh");
             }
         }
         /// <summary>
@@ -187,63 +185,15 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
             }
         }
         /// <summary>
-        /// giao xu
+        /// gioi tinh
         /// </summary>
-        public string GiaoXu
+        public bool GioiTinh
         {
-            get { return _giaoxu; }
+            get { return _gioitinh; }
             set
             {
-                _giaoxu = value;
-                OnPropertyChanged("GiaoXu");
-            }
-        }
-        /// <summary>
-        /// giao hat
-        /// </summary>
-        public string GiaoHat
-        {
-            get { return _giaohat; }
-            set
-            {
-                _giaohat = value;
-                OnPropertyChanged("GiaoHat");
-            }
-        }
-        /// <summary>
-        /// giao phan
-        /// </summary>
-        public string GiaoPhan
-        {
-            get { return _giaophan; }
-            set
-            {
-                _giaophan = value;
-                OnPropertyChanged("GiaoPhan");
-            }
-        }
-        /// <summary>
-        /// ngay chuyen den
-        /// </summary>
-        public DateTime NgayChuyenDen
-        {
-            get { return _ngaychuyenden; }
-            set
-            {
-                _ngaychuyenden = value;
-                OnPropertyChanged("NgayChuyenDen");
-            }
-        }
-        /// <summary>
-        /// ngay chuyen di
-        /// </summary>
-        public DateTime? NgayChuyenDi
-        {
-            get { return _ngaychuyendi; }
-            set
-            {
-                _ngaychuyendi = value;
-                OnPropertyChanged("NgayChuyenDi");
+                _gioitinh = value;
+                OnPropertyChanged("GioiTinh");
             }
         }
         /// <summary>
@@ -258,106 +208,69 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
                 OnPropertyChanged("Gioi");
             }
         }
+       
         /// <summary>
-        /// ngay tham gia
+        /// ten cha
         /// </summary>
-        public DateTime NgayThamGia
+        public string TenCha
         {
-            get { return _ngaythamgia; }
+            get { return _tencha; }
             set
             {
-                _ngaythamgia = value;
-                OnPropertyChanged("NgayThamGia");
+                _tencha = value;
+                OnPropertyChanged("TenCha");
             }
         }
         /// <summary>
-        /// ngay ket thuc
+        /// ten me
         /// </summary>
-        public DateTime? NgayKetThuc
+        public string TenMe
         {
-            get { return _ngayketthuc; }
+            get { return _tenme; }
             set
             {
-                _ngayketthuc = value;
-                OnPropertyChanged("NgayKetThuc");
+                _tenme = value;
+                OnPropertyChanged("TenMe");
             }
         }
         /// <summary>
-        /// id cua cha
+        /// so dien thoai
         /// </summary>
-        public int? IDCha
+        public string SoDienThoai
         {
-            get { return _cha; }
+            get { return _sodienthoai; }
             set
             {
-                _cha = value;
-                OnPropertyChanged("IDCha");
+                _sodienthoai = value;
+                OnPropertyChanged("SoDienThoai");
             }
         }
         /// <summary>
-        /// id cua me
+        /// nghe nghiep
         /// </summary>
-        public int? IDMe
+        public string NgheNghiep
         {
-            get { return _me; }
+            get { return _nghenghiep; }
             set
             {
-                _me = value;
-                OnPropertyChanged("IDMe");
+                _nghenghiep = value;
+                OnPropertyChanged("NgheNghiep");
+            }
+        }
+        /// <summary>
+        /// anh dai dien
+        /// </summary>
+        public byte[] AnhDaiDien
+        {
+            get { return _anhdaidien; }
+            set
+            {
+                _anhdaidien = value;
+                OnPropertyChanged("AnhDaiDien");
             }
         }
 
         #endregion thong tin giao dan
-
-        /// <summary>
-        /// ten thanh, ho ten cha
-        /// </summary>
-        public string FullNameCha
-        {
-            get { return _fullnamecha; }
-            set
-            {
-                _fullnamecha = value;
-                OnPropertyChanged("FullNameCha");
-            }
-        }
-        /// <summary>
-        /// ma ca nhan cua cha
-        /// </summary>
-        public string CodeCha
-        {
-            get { return _codecha; }
-            set
-            {
-                _codecha = value;
-                OnPropertyChanged("CodeCha");
-            }
-        }
-        /// <summary>
-        /// ma ca nhan cua me
-        /// </summary>
-        public string CodeMe
-        {
-            get { return _codeme; }
-            set
-            {
-                _codeme = value;
-                OnPropertyChanged("CodeMe");
-            }
-        }
-
-        /// <summary>
-        /// ten thanh, ho ten me
-        /// </summary>
-        public string FullNameMe
-        {
-            get { return _fullnameme; }
-            set
-            {
-                _fullnameme = value;
-                OnPropertyChanged("FullNameMe");
-            }
-        }
 
         #region thong tin ve bi tich
 
@@ -471,93 +384,62 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
 
         #endregion thong tin ve bi tich
 
+        #region thong tin chuyen xu
 
-        /// <summary>
-        /// Flag to track if editing of the item was completed successfully.
-        /// </summary>
-        public bool IsEditComplete
+        public DateTime NgayChuyen
         {
-            get { return _isEditComplete; }
+            get { return _ngaychuyen; }
             set
             {
-                _isEditComplete = value;
-                OnPropertyChanged("IsEditComplete");
+                _ngaychuyen = value;
+                OnPropertyChanged("NgayChuyen");
             }
         }
+
+        public string NoiChuyen
+        {
+            get { return _noichuyen; }
+            set
+            {
+                _noichuyen = value;
+                OnPropertyChanged("NoiChuyen");
+            }
+        }
+
+        public string ThuocGiaoXu
+        {
+            get { return _thuocgiaoxu; }
+            set
+            {
+                _thuocgiaoxu = value;
+                OnPropertyChanged("ThuocGiaoXu");
+            }
+        }
+
+        public string ThuocGiaoPhan
+        {
+            get { return _thuocgiaophan; }
+            set
+            {
+                _thuocgiaophan = value;
+                OnPropertyChanged("ThuocGiaoPhan");
+            }
+        }
+        #endregion 
+
         #endregion Properties
 
         #region Commands
-       
-        /// <summary>
-        /// kiem tra ma ca nhan cua cha
-        /// </summary>
-        public ICommand CheckCodeCha
-        {
-            get
-            {
-                if (_checkcodecha == null)
-                    _checkcodecha = new RelayCommand(
-                        () =>
-                        {
-                            FullNameCha = string.Empty;
-                            if (GiaoDanServices.CheckValidCode(CodeCha))
-                            {
-                                var _hotencha = GiaoDanServices.GetNameGiaoDanByID(IDCha);
-                                FullNameCha = _hotencha.tenthanh + ' ' + _hotencha.hoten;
-                            }
-
-                        });
-
-                return _checkcodecha;
-            }
-            set
-            {
-                _checkcodecha = value;
-                OnPropertyChanged("CheckCodeCha");
-
-            }
-        }
-        /// <summary>
-        /// kiem tra ma ca nhan cua me
-        /// </summary>
-        public ICommand CheckCodeMe
-        {
-            get
-            {
-                if (_checkcodeme == null)
-                    _checkcodeme = new RelayCommand(
-                        () =>
-                        {
-                            FullNameMe = string.Empty;
-                            if (GiaoDanServices.CheckValidCode(CodeMe))
-                            {
-                                var _hotenme = GiaoDanServices.GetNameGiaoDanByID(IDMe);
-                                FullNameMe = _hotenme.tenthanh + ' ' + _hotenme.hoten;
-                            }
-
-                        });
-
-                return _checkcodeme;
-            }
-            set
-            {
-                _checkcodeme = value;
-                OnPropertyChanged("CheckCodeMe");
-
-            }
-        }
-        
 
         #endregion
 
         #region contructor
         public ThemGiaoDanViewModel()
         {
-            NgaySinh = DateTime.Now;
             Gioi = -1;
-            MaGiaoDan = "----------";
             GioiTinh = true;
             m_giaohoSuggestionsSource = new GiaoHoSuggestionsSource();
+
         }
 
         #endregion
@@ -575,38 +457,39 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
                 switch (Name)
                 {
 
+                    case "TenThanh":
+                        if (string.IsNullOrEmpty(this.TenThanh))
+                            errorMsg = "Tên Thánh không được để trống!";
+                        break;
                     case "HoTen":
                         if (string.IsNullOrEmpty(this.HoTen))
                             errorMsg = "Tên giáo dân không được để trống!";
-                        break;
-                    case "CodeCha":
-                        if (!string.IsNullOrEmpty(CodeCha) && !GiaoDanServices.CheckValidCode(CodeCha))
-                            errorMsg = "Mã cá nhân của cha không đúng!";
-                        break;
-                    case "CodeMe":
-                        if (!string.IsNullOrEmpty(CodeMe) && !GiaoDanServices.CheckValidCode(CodeMe))
-                            errorMsg = "Mã cá nhân của me không đúng!";
                         break;
                     case "GiaoHo":
                         if (string.IsNullOrEmpty(this.GiaoHo))
                             errorMsg = "Giáo họ không được để trống!";
                         break;
-                    case "GiaoXu":
-                        if (string.IsNullOrEmpty(this.GiaoXu))
-                            errorMsg = "Giáo xứ không được để trống!";
+                    case "TenCha":
+                        if (string.IsNullOrEmpty(this.TenCha))
+                            errorMsg = "Họ tên cha không được để trống!";
                         break;
-                    case "GiaoHat":
-                        if (string.IsNullOrEmpty(this.GiaoHat))
-                            errorMsg = "Giáo hạt không được để trống!";
-                        break;
-                    case "GiaoPhan":
-                        if (string.IsNullOrEmpty(this.GiaoPhan))
-                            errorMsg = "Giáo phận không được để trống!";
+                    case "TenMe":
+                        if (string.IsNullOrEmpty(this.TenMe))
+                            errorMsg = "Họ tên mẹ không được để trống!";
                         break;
                     case "Gioi":
                         if (this.Gioi == -1)
                             errorMsg = "Giới không được để trống!";
                         break;
+                    case "SoDienThoai":
+                        if(!string.IsNullOrEmpty(this.SoDienThoai))
+                        {
+                            if (!Regex.Match(this.SoDienThoai, @"^-*[0-9,\.?\-?\(?\)?\ ]+$").Success )
+                                errorMsg = "Số điện thoại không hợp lệ!";
+                        }
+                        break;
+                        
+
                 }
 
                 return errorMsg;
@@ -618,39 +501,29 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
         #region Events
         public void CreateGiaoDan()
         {
+            
             // them record giao dan
             DataLayer.GiaoDan giaodan = new DataLayer.GiaoDan();
-            giaodan.MaGiaoDan = MaGiaoDan;
             giaodan.TenThanh = TenThanh;
             giaodan.HoTen = HoTen;
+
+            //add anh dai dien
             giaodan.NgaySinh = NgaySinh;
+            giaodan.ThangSinh = ThangSinh;
+            giaodan.NamSinh = NamSinh;
+
+            giaodan.NoiSinh = NoiSinh;
+            giaodan.GiaoHo = GiaoHo;
             giaodan.GioiTinh = GioiTinh;
-            giaodan.Cha = IDCha;
-            giaodan.Me = IDMe;
+            giaodan.Gioi = Gioi;
+            giaodan.TenCha = TenCha;
+            giaodan.TenMe = TenMe;
+            giaodan.SoDienThoai = SoDienThoai;
+            giaodan.NgheNghiep = NgheNghiep;
             giaodan.Status = true;
+
             ID = GiaoDanServices.AddOrUpdateGiaoDan(giaodan);
 
-            // them record dia chi
-            DataLayer.DiaChi diachi = new DataLayer.DiaChi();
-            diachi.IDGiaoDan = ID;
-            diachi.DiaChiNha = DiaChi;
-            diachi.GiaoHo = GiaoHo;
-            diachi.GiaoXu = "Ngọc Lâm";
-            diachi.GiaoHat = "Phương Lâm";
-            diachi.GiaoPhan = "Xuân Lộc";
-            diachi.NgayChuyenDen = DateTime.Now;
-            diachi.NgayChuyenDi = null;
-            diachi.Status = true;
-            DiaChiServices.AddOrUpdateDiaChi(diachi);
-
-            // them record gioi
-            DataLayer.Gioi gioi = new DataLayer.Gioi();
-            gioi.IDGiaoDan = ID;
-            gioi.Gioi1 = Gioi;
-            gioi.NgayThamGia = DateTime.Now;
-            gioi.NgayKetThuc = null;
-            gioi.Status = true;
-            GioiServices.AddOrUpdateGioi(gioi);
         }
         #endregion
     }

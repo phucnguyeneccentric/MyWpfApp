@@ -1,4 +1,6 @@
 ﻿using QuanLyGiaoXu.ViewModels.GiaoDan;
+using QuanLyGiaoXu.ViewModels.HoatDongMucVu;
+using QuanLyGiaoXu.ViewModels.HoatDongMucVu.ChuyenXu;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +24,17 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
                 OnPropertyChanged("GiaoDanMenu");
             }
         }
+
+        private ObservableCollection<HoatDongMucVuViewModelBase> _hoatdongmucvu;
+        public ObservableCollection<HoatDongMucVuViewModelBase> HoatDongMucVu
+        {
+            get { return this._hoatdongmucvu; }
+            set
+            {
+                _hoatdongmucvu = value;
+                OnPropertyChanged("HoatDongMucVu");
+            }
+        }
         public GiaoDanViewModel()
         {
             worker.DoWork += worker_DoWork;
@@ -30,16 +43,19 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
         }
 
         ObservableCollection<GiaoDanViewModelBase> tmp_GiaoDanMenu = new ObservableCollection<GiaoDanViewModelBase>();
+        ObservableCollection<HoatDongMucVuViewModelBase> tmp_hoatdongmucvu = new ObservableCollection<HoatDongMucVuViewModelBase>();
 
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             tmp_GiaoDanMenu.Add(new DanhSachGiaoDanViewModel());
+            tmp_hoatdongmucvu.Add(new DanhSachChuyenXuViewModel());
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             GiaoDanMenu = tmp_GiaoDanMenu;
+            HoatDongMucVu = tmp_hoatdongmucvu;
         }
     }
 }

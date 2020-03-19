@@ -32,6 +32,18 @@ namespace DataLayer
         [StringLength(20)]
         public string GiaoHo { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public string GiaoXu { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string GiaoHat { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string GiaoPhan { get; set; }
+
         public DateTime NgayChuyenDen { get; set; }
 
         public DateTime? NgayChuyenDi { get; set; }

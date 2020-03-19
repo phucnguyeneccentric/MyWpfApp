@@ -65,27 +65,53 @@
   <ItemGroup>
     <Compile Include="Data\BiTich.cs" />
     <Compile Include="BiTichProvider.cs" />
-    <Compile Include="Data\ChuongTrinhGiaoLy.cs" />
+    <Compile Include="Data\ChuyenXu.cs" />
     <Compile Include="Data\DiaChi.cs" />
     <Compile Include="Data\GiaoHo.cs" />
+    <Compile Include="Data\HonPhoi.cs" />
+    <Compile Include="Data\QuaDoi.cs" />
+    <Compile Include="Data\QuanHeGiaDinh.cs" />
     <Compile Include="DiaChiProvider.cs" />
     <Compile Include="Data\GiaDinh.cs" />
     <Compile Include="GiaDinhProvider.cs" />
     <Compile Include="Data\GiaoDan.cs" />
     <Compile Include="GiaoDanProvider.cs" />
-    <Compile Include="Data\GiaoLy.cs" />
-    <Compile Include="GioiProvider.cs" />
     <Compile Include="Data\QLGIAOXU.cs" />
-    <Compile Include="Migrations\201903191510174_NotRequireDiachi.cs" />
-    <Compile Include="Migrations\201903191510174_NotRequireDiachi.Designer.cs">
-      <DependentUpon>201903191510174_NotRequireDiachi.cs</DependentUpon>
+    <Compile Include="Migrations\201905271428051_ChangeIDGiaDinh.cs" />
+    <Compile Include="Migrations\201905271428051_ChangeIDGiaDinh.Designer.cs">
+      <DependentUpon>201905271428051_ChangeIDGiaDinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903230332498_UpdateLengthDiaChi.cs" />
-    <Compile Include="Migrations\201903230332498_UpdateLengthDiaChi.Designer.cs">
-      <DependentUpon>201903230332498_UpdateLengthDiaChi.cs</DependentUpon>
+    <Compile Include="Migrations\201905271453344_RemoveMaGiaoDan.cs" />
+    <Compile Include="Migrations\201905271453344_RemoveMaGiaoDan.Designer.cs">
+      <DependentUpon>201905271453344_RemoveMaGiaoDan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271501531_RemoveQuanHeChuHo.cs" />
+    <Compile Include="Migrations\201905271501531_RemoveQuanHeChuHo.Designer.cs">
+      <DependentUpon>201905271501531_RemoveQuanHeChuHo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281341122_RemoveTanTong.cs" />
+    <Compile Include="Migrations\201905281341122_RemoveTanTong.Designer.cs">
+      <DependentUpon>201905281341122_RemoveTanTong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905291345341_AddChaMe.cs" />
+    <Compile Include="Migrations\201905291345341_AddChaMe.Designer.cs">
+      <DependentUpon>201905291345341_AddChaMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906010843226_NgaySinhCanBeNull.cs" />
+    <Compile Include="Migrations\201906010843226_NgaySinhCanBeNull.Designer.cs">
+      <DependentUpon>201906010843226_NgaySinhCanBeNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906011007426_BigUpdateNgaySinh.cs" />
+    <Compile Include="Migrations\201906011007426_BigUpdateNgaySinh.Designer.cs">
+      <DependentUpon>201906011007426_BigUpdateNgaySinh.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="sysdiagrams.cs" />
+    <Compile Include="TenThanh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TenThanh.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -108,11 +134,30 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903191510174_NotRequireDiachi.resx">
-      <DependentUpon>201903191510174_NotRequireDiachi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905271428051_ChangeIDGiaDinh.resx">
+      <DependentUpon>201905271428051_ChangeIDGiaDinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903230332498_UpdateLengthDiaChi.resx">
-      <DependentUpon>201903230332498_UpdateLengthDiaChi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905271453344_RemoveMaGiaoDan.resx">
+      <DependentUpon>201905271453344_RemoveMaGiaoDan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271501531_RemoveQuanHeChuHo.resx">
+      <DependentUpon>201905271501531_RemoveQuanHeChuHo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281341122_RemoveTanTong.resx">
+      <DependentUpon>201905281341122_RemoveTanTong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905291345341_AddChaMe.resx">
+      <DependentUpon>201905291345341_AddChaMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906010843226_NgaySinhCanBeNull.resx">
+      <DependentUpon>201906010843226_NgaySinhCanBeNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906011007426_BigUpdateNgaySinh.resx">
+      <DependentUpon>201906011007426_BigUpdateNgaySinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TenThanh.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TenThanh.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

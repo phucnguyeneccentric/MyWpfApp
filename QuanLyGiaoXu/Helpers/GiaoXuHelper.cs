@@ -11,7 +11,9 @@ namespace QuanLyGiaoXu.Helpers
     {
         #region MenuGiaoDan
         public static string DanhSachGiaoDan = "Danh Sách Giáo Dân";
+        public static string ChuyenXu = "Chuyển Xứ";
         public static string DanhSachGiaoDanIcon = "Database";
+        public static string ChuyenXuIcon = "Database";
         #endregion
 
         #region MenuBiTich
@@ -52,6 +54,14 @@ namespace QuanLyGiaoXu.Helpers
             _firstName = _spltname.LastOrDefault();
             return _firstName.Trim();
         }
+        
+        public static string UnionDayMonthYear(int Day, int Month, int Year)
+        {
+            string _date = string.Empty;
+            _date = Day.ToString() + "/" + Month.ToString() + "/" + Year.ToString();
+            return _date;
+        }
+
 
         public static string ToFirstUpper(string s)  
         {  

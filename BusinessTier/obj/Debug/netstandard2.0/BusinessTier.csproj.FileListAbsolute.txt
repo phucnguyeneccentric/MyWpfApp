@@ -1,3 +1,7 @@
+C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.csprojAssemblyReference.cache
+C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.csproj.CoreCompileInputs.cache
+C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.AssemblyInfoInputs.cache
+C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.AssemblyInfo.cs
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\bin\Debug\netstandard2.0\BusinessTier.deps.json
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\bin\Debug\netstandard2.0\BusinessTier.dll
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\bin\Debug\netstandard2.0\BusinessTier.pdb
@@ -8,10 +12,6 @@ C:\Users\theba\source\repos\MyWpfApp\Businesstier\bin\Debug\netstandard2.0\DataL
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\bin\Debug\netstandard2.0\DataLayer.dll.config
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\bin\Debug\netstandard2.0\EntityTier.pdb
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\bin\Debug\netstandard2.0\EntityFramework.xml
-C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.csprojAssemblyReference.cache
-C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.csproj.CoreCompileInputs.cache
-C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.AssemblyInfoInputs.cache
-C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.AssemblyInfo.cs
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.csproj.CopyComplete
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.dll
 C:\Users\theba\source\repos\MyWpfApp\Businesstier\obj\Debug\netstandard2.0\BusinessTier.pdb

@@ -97,6 +97,8 @@
     <Compile Include="Converters\BoolInverterConverter.cs" />
     <Compile Include="Converters\GenderConverter.cs" />
     <Compile Include="Converters\GioiConverter.cs" />
+    <Compile Include="Converters\NulltoIntConverter.cs" />
+    <Compile Include="Helpers\GiaoDanAutoCompleteSource.cs" />
     <Compile Include="Helpers\GiaoXuHelper.cs" />
     <Compile Include="Mediators\AsyncObservableCollection.cs" />
     <Compile Include="Mediators\ChiTietGiaoDanDirector.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Helpers\SuggestionsSource.cs" />
     <Compile Include="Mediators\ObservableCollectionObject.cs" />
     <Compile Include="Mediators\ObservableImmutableList.cs" />
+    <Compile Include="ValidationRules\IsNumberValidationRule.cs" />
     <Compile Include="ValidationRules\MaxLengthValidationRule.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="ValidationRules\NotValidDateValidationRule.cs" />
@@ -119,6 +122,11 @@
     <Compile Include="ViewModels\GiaoDan\ChiTietGiaoDan\ChiTietGiaoDanEditViewModel.cs" />
     <Compile Include="ViewModels\GiaoDan\DanhSachGiaoDanViewModel.cs" />
     <Compile Include="ViewModels\GiaoDan\ThemGiaoDanViewModel.cs" />
+    <Compile Include="ViewModels\HoatDongMucVu\ChuyenXu\ChiTietChuyenXuEditViewModel.cs" />
+    <Compile Include="ViewModels\HoatDongMucVu\ChuyenXu\ChiTietChuyenXuViewModel.cs" />
+    <Compile Include="ViewModels\HoatDongMucVu\ChuyenXu\DanhSachChuyenXuViewModel.cs" />
+    <Compile Include="ViewModels\HoatDongMucVu\ChuyenXu\ThemChuyenXuViewModel.cs" />
+    <Compile Include="ViewModels\HoatDongMucVu\HoatDongMucVuViewModelBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -143,11 +151,20 @@
     <Compile Include="Views\GiaoDan\DanhSachGiaoDan.xaml.cs">
       <DependentUpon>DanhSachGiaoDan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GiaoDan\HoGiaDinh.xaml.cs">
-      <DependentUpon>HoGiaDinh.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\GiaoDan\ThemGiaoDan.xaml.cs">
       <DependentUpon>ThemGiaoDan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GiaoHo\DanhSachGiaoHo.xaml.cs">
+      <DependentUpon>DanhSachGiaoHo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoatDongMucVu\ChiTietChuyenXu.xaml.cs">
+      <DependentUpon>ChiTietChuyenXu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoatDongMucVu\DanhSachChuyenXu.xaml.cs">
+      <DependentUpon>DanhSachChuyenXu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoatDongMucVu\ThemChuyenXu.xaml.cs">
+      <DependentUpon>ThemChuyenXu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -160,6 +177,12 @@
     </Compile>
     <Compile Include="Views\ThieuNhi\ThongTinTN.xaml.cs">
       <DependentUpon>ThongTinTN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimKiem\TimKiemGiaDinh.xaml.cs">
+      <DependentUpon>TimKiemGiaDinh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimKiem\TimKiemGiaoDan.xaml.cs">
+      <DependentUpon>TimKiemGiaoDan.xaml</DependentUpon>
     </Compile>
     <Page Include="ResourceDictionary\CustomScrollViewer.xaml">
       <SubType>Designer</SubType>
@@ -193,11 +216,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GiaoDan\HoGiaDinh.xaml">
+    <Page Include="Views\GiaoDan\ThemGiaoDan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GiaoDan\ThemGiaoDan.xaml">
+    <Page Include="Views\GiaoHo\DanhSachGiaoHo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HoatDongMucVu\ChiTietChuyenXu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HoatDongMucVu\DanhSachChuyenXu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HoatDongMucVu\ThemChuyenXu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,6 +263,14 @@
     <Page Include="Views\ThieuNhi\ThongTinTN.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TimKiem\TimKiemGiaDinh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TimKiem\TimKiemGiaoDan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -276,7 +319,10 @@
       <Name>EntityTier</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\HoatDongMucVu\NhapXu\" />
+    <Folder Include="ViewModels\HoatDongMucVu\QuaDoi\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\abc.jpg" />
   </ItemGroup>

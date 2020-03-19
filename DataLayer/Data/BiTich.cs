@@ -9,6 +9,8 @@ namespace DataLayer
     [Table("BiTich")]
     public partial class BiTich
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int IDGiaoDan { get; set; }

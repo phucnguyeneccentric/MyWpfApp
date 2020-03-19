@@ -60,8 +60,7 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
                    {
                        ChiTietGiaoDanViewModel giaodan = obj as ChiTietGiaoDanViewModel;
                        return giaodan.Ten.ToLower().Contains(_textSearch)
-                           || giaodan.Ho.ToLower().Contains(_textSearch)
-                           || giaodan.MaGiaoDan.Contains(_textSearch);
+                           || giaodan.Ho.ToLower().Contains(_textSearch);
 
                    };
                 view.Filter = p;
@@ -154,24 +153,24 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
 
             await Task.Run(() =>
             {
-                ListGiaoHo = new ObservableCollection<string>(DiaChiServices.GetListGiaoHo());
-                ListGioi = new ObservableCollection<string>(new List<string> { "Thiếu Nhi","Giới Trẻ","Gia Trưởng","Hiền Mẫu","Cao Niên" });
+                //ListGiaoHo = new ObservableCollection<string>(DiaChiServices.GetListGiaoHo());
+                //ListGioi = new ObservableCollection<string>(new List<string>
+                //{ "Thiếu Nhi","Giới Trẻ","Gia Trưởng","Hiền Mẫu","Cao Niên" });
                 var list = GiaoDanServices.GetAllActiveGiaoDan();
                 foreach (var gd in list)
                 {
                     var _vm = new ChiTietGiaoDanViewModel();
-                    _vm.ID = gd.id;
-                    _vm.MaGiaoDan = gd.magiaodan;
-                    _vm.TenThanh = gd.tenthanh;
-                    _vm.NgaySinh = gd.ngaysinh;
-                    _vm.Ho = GiaoXuHelper.SplitLastName(gd.hoten);
-                    _vm.Ten = GiaoXuHelper.SplitFirstName(gd.hoten);
-                    _vm.GioiTinh = gd.gioitinh;
-                    _vm.GiaoHo = gd.giaoho;
-                    _vm.Gioi = gd.gioi;
-                    _vm.Diachinha = gd.diachinha;
-                    _vm.IDCha = gd.cha;
-                    _vm.IDMe = gd.me;
+                    _vm.ID = gd.ID;
+                    _vm.TenThanh = gd.TenThanh;
+                    _vm.NgaySinh = gd.NgaySinh;
+                    _vm.Ho = GiaoXuHelper.SplitLastName(gd.HoTen);
+                    _vm.Ten = GiaoXuHelper.SplitFirstName(gd.HoTen);
+                    _vm.NgThgNamsinh = GiaoXuHelper.UnionDayMonthYear(gd.NgaySinh, gd.ThangSinh, gd.NamSinh);
+
+                    _vm.GioiTinh = gd.GioiTinh;
+                    _vm.GiaoHo = gd.GiaoHo;
+                    _vm.Gioi = gd.Gioi;
+                    _vm.SoDienThoai = gd.SoDienThoai;
 
                     collection_GiaoDan.Add(_vm);
                 }
@@ -231,95 +230,20 @@ namespace QuanLyGiaoXu.ViewModels.GiaoDan
             if (_gd != null)
             {
                 
-                _vm.ID = _gd.id;
-                _vm.MaGiaoDan = _gd.magiaodan;
-                _vm.TenThanh = _gd.tenthanh;
-                _vm.NgaySinh = _gd.ngaysinh;
-                _vm.Ho = GiaoXuHelper.SplitLastName(_gd.hoten);
-                _vm.Ten = GiaoXuHelper.SplitFirstName(_gd.hoten);
-                _vm.GioiTinh = _gd.gioitinh;
-                _vm.GiaoHo = _gd.giaoho;
-                _vm.Gioi = _gd.gioi;
-                _vm.Diachinha = _gd.diachinha;
-                _vm.IDCha = _gd.cha;
-                _vm.IDMe = _gd.me;
+                _vm.ID = _gd.ID;
+                _vm.TenThanh = _gd.TenThanh;
+                _vm.NgaySinh = _gd.NgaySinh;
+                _vm.Ho = GiaoXuHelper.SplitLastName(_gd.HoTen);
+                _vm.Ten = GiaoXuHelper.SplitFirstName(_gd.HoTen);
+                _vm.GioiTinh = _gd.GioiTinh;
+                _vm.GiaoHo = _gd.GiaoHo;
+                _vm.Gioi = _gd.Gioi;
+                
 
             }
         }
         #endregion
 
-        private CollectionViewSource CVS { get; set; }
 
-        //#region Filter
-        //public void AddGiaoHoFilter()
-        //{
-        //    CVS = ListGiaoDan;
-        //    // see Notes on Adding Filters:
-        //    if (RemoveGiaoHoFilter)
-        //    {
-        //        ListGiaoDan.Filter -= new FilterEventHandler(FilterByGiaoHo);
-        //        ListGiaoDan.Filter += new FilterEventHandler(FilterByGiaoHo);
-        //    }
-        //    else
-        //    {
-        //        ListGiaoDan.Filter += new FilterEventHandler(FilterByGiaoHo);
-        //        RemoveGiaoHoFilter = true;
-        //    }
-        //}
-        //public void AddYearFilter()
-        //{
-        //    // see Notes on Adding Filters:
-        //    if (CanRemoveYearFilter)
-        //    {
-        //        CVS.Filter -= new FilterEventHandler(FilterByYear);
-        //        CVS.Filter += new FilterEventHandler(FilterByYear);
-        //    }
-        //    else
-        //    {
-        //        CVS.Filter += new FilterEventHandler(FilterByYear);
-        //        CanRemoveYearFilter = true;
-        //    }
-        //}
-
-        //private void FilterByGiaoHo(object sender, FilterEventArgs e)
-        //{
-        //    // see Notes on Filter Methods:
-        //    var src = e.Item as ChiTietGiaoDanViewModel;
-        //    if (src == null)
-        //        e.Accepted = false;
-        //    else if (string.Compare(SelectedGiaoHo, src.GiaoHo) != 0)
-        //        e.Accepted = false;
-        //}
-        //private void FilterByYear(object sender, FilterEventArgs e)
-        //{
-        //    // see Notes on Filter Methods:
-        //    var src = e.Item as Thing;
-        //    if (src == null)
-        //        e.Accepted = false;
-        //    else if (SelectedYear != src.Year)
-        //        e.Accepted = false;
-        //}
-
-        //private enum FilterField
-        //{
-        //    GiaoHo,
-        //    Gioi,
-        //    None
-        //}
-
-        //private void ApplyFilter(FilterField field)
-        //{
-        //    switch(field)
-        //    {
-        //        case GiaoHo:
-        //            break;
-        //        case Gioi:
-        //            break;
-        //        default:
-        //            break;
-
-        //    }
-        //}
-        //#endregion
     }
 }

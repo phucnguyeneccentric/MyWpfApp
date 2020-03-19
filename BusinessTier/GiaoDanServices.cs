@@ -11,32 +11,30 @@ namespace BusinessTier
     public abstract class GiaoDanServices
     {
        
-        public static GiaoDan GetActiveGiaoDanByCode(string maGiaoDan)
-        {
-            return GiaoDanProvider.GetActiveGiaoDanByCode(maGiaoDan);
-        }
-        public static GiaoDanEntityFull GetGiaoDanByID(int? idGiaoDan)
+       
+        public static GiaoDan GetGiaoDanByID(int? idGiaoDan)
         {
             return GiaoDanProvider.GetGiaoDanByID(idGiaoDan);
         }
-
-        public static bool CheckValidCode(string maGiaoDan)
+        public static ChuyenXu GetInfoLeaving(int? idGiaoDan)
         {
-            return GiaoDanProvider.CheckValidCode(maGiaoDan);
+            return GiaoDanProvider.GetInfoLeaving(idGiaoDan);
         }
+        public static QuaDoi GetInfoDeath(int? idGiaoDan)
+        {
+            return GiaoDanProvider.GetInfoDeath(idGiaoDan);
+        }
+
         public static GiaoDanEntityShort GetNameGiaoDanByID(int? idGiaoDan)
         {
             return GiaoDanProvider.GetNameGiaoDanByID(idGiaoDan);
         }
-        public static string GetCodeGiaoDanByID(int? idGiaoDan)
-        {
-            return GiaoDanProvider.GetCodeGiaoDanByID(idGiaoDan);
-        }
+       
         public static List<GiaoDan> GetAllActiveGiaoDanByName(string tenGiaodan)
         {
             return GiaoDanProvider.GetAllActiveGiaoDanByName(tenGiaodan);
         }
-        public static List<GiaoDanEntityFull> GetAllActiveGiaoDan()
+        public static List<GiaoDan> GetAllActiveGiaoDan()
         {
             return GiaoDanProvider.GetAllActiveGiaoDan();
         }
@@ -44,9 +42,9 @@ namespace BusinessTier
         {
             return GiaoDanProvider.AddOrUpdateGiaoDan(gd);
         }
-        public static bool DeleteGiaoDan(string maGiaoDan)
+        public static bool DeleteGiaoDan(int idGiaoDan)
         {
-            return GiaoDanProvider.DeleteGiaoDan(maGiaoDan);
+            return GiaoDanProvider.DeleteGiaoDan(idGiaoDan);
         }
     }
 }

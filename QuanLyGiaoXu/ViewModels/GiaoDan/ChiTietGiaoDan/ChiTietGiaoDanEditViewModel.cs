@@ -7,36 +7,81 @@ namespace QuanLyGiaoXu.ViewModels.CacGioi.ChiTietGiaoDan
 {
     public class ChiTietGiaoDanEditViewModel : ThemGiaoDanViewModel
     {
+        #region Fields
+        private string _tinhtrang;
 
+        #endregion
+
+
+        #region Properties
+        public string TinhTrang
+        {
+            get { return _tinhtrang; }
+            set
+            {
+                _tinhtrang = value;
+                OnPropertyChanged("TinhTrang");
+            }
+        }
+        #endregion
         #region contructor
-        public ChiTietGiaoDanEditViewModel(int id, string ho, string ten, string magiaodan, string tenthanh, DateTime ngaysinh, bool gioitinh, int gioi, string giaoho, string diachinha, int? cha, int? me)
+        public ChiTietGiaoDanEditViewModel(int id, string tenthanh, string ho, string ten, int ngaysinh, int thangsinh, int namsinh, bool gioitinh, string giaoho, int gioi,  string sodienthoai)
         {
             this.ID = id;
-            this.MaGiaoDan = magiaodan;
             this.TenThanh = tenthanh;
             this.HoTen = ho + ' ' + ten;
             this.NgaySinh = ngaysinh;
+            this.ThangSinh = thangsinh;
+            this.NamSinh = namsinh;
+
             this.GioiTinh = gioitinh;
             this.GiaoHo = giaoho;
-            this.DiaChi = diachinha;
-            DataLayer.DiaChi diachi = DiaChiServices.GetDiaChiByIDGiaoDan(ID);
-            this.GiaoHo = diachi.GiaoHo;
-            this.GiaoXu = diachi.GiaoXu;
-            this.GiaoHat = diachi.GiaoHat;
-            this.GiaoPhan = diachi.GiaoPhan;
-
             this.Gioi = gioi;
-            this.IDCha = cha;
-            this.CodeCha = GiaoDanServices.GetCodeGiaoDanByID(cha);
-            var _hotencha = GiaoDanServices.GetNameGiaoDanByID(cha);
-            this.FullNameCha = _hotencha.tenthanh + ' ' + _hotencha.hoten;
-            this.IDMe = me;
-            this.CodeMe = GiaoDanServices.GetCodeGiaoDanByID(me);
-            var _hotenme = GiaoDanServices.GetNameGiaoDanByID(me);
-            this.FullNameMe = _hotenme.tenthanh + ' ' + _hotenme.hoten;
+            this.SoDienThoai = sodienthoai;
 
-            this.GiaoHoSuggestionsSource = new GiaoHoSuggestionsSource();
+            Initialize();
 
+        }
+
+        private void Initialize()
+        {
+            DataLayer.GiaoDan giaodan = new DataLayer.GiaoDan();
+            giaodan = GiaoDanServices.GetGiaoDanByID(ID);
+           
+            TenCha = giaodan.TenCha;
+            TenMe = giaodan.TenMe;
+            NgheNghiep = giaodan.NgheNghiep;
+            AnhDaiDien = giaodan.AnhDaiDien;
+
+            
+            // thong tin ve tinh trang chuyen xu
+            var chuyenxu = GiaoDanServices.GetInfoLeaving(ID);
+
+            // thong tin ve tinh trang qua doi
+            var quadoi = GiaoDanServices.GetInfoDeath(ID);
+
+            if (chuyenxu != null)
+            {
+                TinhTrang = "Đã chuyển xứ";
+            }
+            else if (quadoi != null)
+            {
+                TinhTrang = "Đã qua đời";
+            }
+            else
+            {
+                TinhTrang = "Đang sinh hoạt tại xứ";
+            }
+
+            
+
+            //NgayChuyen = chuyenxu.NgayChuyen;
+            //NoiChuyen = chuyenxu.NoiChuyen;
+            //ThuocGiaoXu = chuyenxu.ThuocGiaoXu;
+            //ThuocGiaoPhan = chuyenxu.ThuocGiaoPhan;
+
+            //thong tin ve tinh trang qua doi
+            //add code
         }
 
         #endregion
@@ -46,33 +91,33 @@ namespace QuanLyGiaoXu.ViewModels.CacGioi.ChiTietGiaoDan
         public void SaveInfo()
         {
             Console.WriteLine("ID la {0}", ID);
+            
+
             // update record giao dan
             DataLayer.GiaoDan giaodan = new DataLayer.GiaoDan();
+
             giaodan.ID = ID;
-            giaodan.MaGiaoDan = MaGiaoDan;
             giaodan.TenThanh = TenThanh;
             giaodan.HoTen = HoTen;
+            // add anh dai dien
             giaodan.NgaySinh = NgaySinh;
+            giaodan.ThangSinh = ThangSinh;
+            giaodan.NamSinh = NamSinh;
+
+            giaodan.NoiSinh = NoiSinh;
+            giaodan.GiaoHo = GiaoHo;
             giaodan.GioiTinh = GioiTinh;
-            giaodan.Cha = IDCha;
-            giaodan.Me = IDMe;
+            giaodan.Gioi = Gioi;
+            giaodan.TenCha = TenCha;
+            giaodan.TenMe = TenMe;
+            giaodan.SoDienThoai = SoDienThoai;
+            giaodan.NgheNghiep = NgheNghiep;
+
             giaodan.Status = true;
             GiaoDanServices.AddOrUpdateGiaoDan(giaodan);
 
-            // update record dia chi
-            DataLayer.DiaChi diachi = new DataLayer.DiaChi();
-            diachi.IDGiaoDan = ID;
-            diachi.DiaChiNha = DiaChi;
-            diachi.GiaoHo = GiaoHo;
-            diachi.Status = true;
-            DiaChiServices.AddOrUpdateDiaChi(diachi);
-
-            // update record gioi
-            DataLayer.Gioi gioi = new DataLayer.Gioi();
-            gioi.IDGiaoDan = ID;
-            gioi.Gioi1 = Gioi;
-            gioi.Status = true;
-            GioiServices.AddOrUpdateGioi(gioi);
+            
+            
         }
         #endregion
 

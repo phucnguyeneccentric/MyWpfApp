@@ -28,11 +28,12 @@ namespace QuanLyGiaoXu.Views.GiaoDan.ChiTiet
         {
             GioiList = new List<string>();
             InitializeComponent();
-
             addGioilist(GioiList);
             Gioicbx.ItemsSource = GioiList;
 
         }
+
+        
         private void HoTentxtbx_LostFocus(object sender, RoutedEventArgs e)
         {
             HoTentxtbx.Text = GiaoXuHelper.ToFirstUpper(HoTentxtbx.Text);

@@ -16,6 +16,10 @@ namespace QuanLyGiaoXu.ValidationRules
         {
             CultureInfo MyCultureInfo = new CultureInfo("vi-VN");
             DateTime date;
+            if(string.IsNullOrEmpty(value.ToString()))
+            {
+                return new ValidationResult(true, null);
+            }
             var isValidDate = DateTime.TryParseExact(value.ToString(), "dd/MM/yyyy", MyCultureInfo, DateTimeStyles.None, out date);
             if (!isValidDate)
             {

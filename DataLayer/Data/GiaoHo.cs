@@ -14,6 +14,5 @@ namespace DataLayer
         public int ID { get; set; }
         public string TenGiaoHo { get; set; }
 
-        public virtual GiaDinh GiaDinh { get; set; }
     }
 }

@@ -55,9 +55,6 @@ namespace QuanLyGiaoXu.Views.GiaoDan
             GioiList.Add("Cao Niên");
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            TenThanhtxtbx.Focus();
-        }
+       
     }
 }

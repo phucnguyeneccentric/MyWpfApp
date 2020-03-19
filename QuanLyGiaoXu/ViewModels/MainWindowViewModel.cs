@@ -54,7 +54,7 @@ namespace QuanLyGiaoXu.ViewModels
             //MainThieuNhi tn = new MainThieuNhi();
             //tn.ShowDialog();
            // Framecon.Navigate(new MainThieuNhi());
-              Console.WriteLine("fdfd");
+             // Console.WriteLine("fdfd");
         }
         
 
